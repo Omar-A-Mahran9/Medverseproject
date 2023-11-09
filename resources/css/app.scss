@@ -1,0 +1,45 @@
+// Define variable defaults
+// $body-bg: #000;
+$primarycolor: #1D617A;
+$seccolor:#1B1C57;
+
+// Then import Bootstrap and BootstrapVue SCSS files (order is important)
+@import './../../node_modules/bootstrap-scss/bootstrap.scss';
+
+// @import '~bootstrap-vue/dist/bootstrap-vue.css';
+@import './../../node_modules/bootstrap-scss/bootstrap-utilities.scss';
+ 
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900;1000&family=Lexend:wght@100;200;300;400;500;600;700;800&family=Rubik:wght@300&display=swap');
+ 
+body{
+    font-family: 'Cairo', sans-serif;
+font-family: 'Lexend', sans-serif;
+}
+.btn-primary{
+ background-color: $primarycolor;
+ border: none;
+    height: 48px;
+ text-decoration: none;
+ border-radius: 32px;
+ -webkit-border-radius: 32px;
+ -moz-border-radius: 32px;
+ -ms-border-radius: 32px;
+ -o-border-radius: 32px;
+}
+.primarycolor{
+    color: $primarycolor;
+}
+.active{
+    color: $primarycolor !important;
+    border-bottom:4px solid $primarycolor ;
+}
+
+.seccolor,p,h1,h2,h3,h4,h5,h6{
+    color: $seccolor;
+}
+p{
+    font-weight: lighter
+}
+.container-fluid{
+    width: 90%;
+}

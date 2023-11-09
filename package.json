@@ -1,0 +1,31 @@
+{
+    "private": true,
+    "type": "module",
+    "scripts": {
+        "dev": "vite",
+        "build": "vite build"
+    },
+    "devDependencies": {
+        "axios": "^1.1.2",
+        "bootstrap": "^5.3.2",
+        "laravel-vite-plugin": "^0.8.0",
+        "sass": "^1.67.0",
+        "vite": "^4.4.9"
+    },
+    "dependencies": {
+        "@popperjs/core": "^2.11.8",
+        "@vitejs/plugin-vue": "^4.3.4",
+        "admin-lte": "^3.2.0",
+        "bootstrap-scss": "^5.3.1",
+        "html2pdf.js": "^0.10.1",
+        "jquery": "^3.7.1",
+        "laravel-vue-pagination": "^4.1.1",
+        "swiper": "^10.3.0",
+        "tempusdominus-core": "^5.19.3",
+        "vee-validate": "^4.11.6",
+        "vue": "^3.3.4",
+        "vue-html2pdf": "^1.8.0",
+        "vue-router": "^4.2.4",
+        "yup": "^1.2.0"
+    }
+}
