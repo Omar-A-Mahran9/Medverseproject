@@ -6,7 +6,7 @@ import sessions from "@/components/front/sessions/Index.vue";
 import appointments from "@/components/front/Appointment/Index.vue";
 
 import inventory from "@/components/Dashboard/content/inventory/Inventory.vue";
-import customerervice from "@/components/Dashboard/content/customerservice/customerervice.vue";
+import customerervice from "@/components/Dashboard/content/customerservice/Customerervice.vue";
 import reports from "@/components/Dashboard/content/reports/reports.vue";
 import newrequest from "@/components/Dashboard/content/newrequest/Newrequest.vue";
 import myrequest from "@/components/Dashboard/content/myrequest/Myrequest.vue";
