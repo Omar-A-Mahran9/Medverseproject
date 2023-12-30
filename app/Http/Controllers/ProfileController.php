@@ -64,6 +64,7 @@ public function uploadimage(Request $request){
             'username'=>['required'],
             'city'=>[''],
             'phone'=>[''],
+            'position'=>[''],
         ]);
         $user= $validate;
 //    User::findOrfail($request->id)->update($user);

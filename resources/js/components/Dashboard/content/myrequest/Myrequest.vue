@@ -36,7 +36,7 @@
                                     >
                                         <div>
                                             <h3 class="card-title">
-                                                All users
+                                                All Requests
                                             </h3>
                                         </div>
                                     </div>
@@ -106,7 +106,7 @@
                                                                 padding-top: 0px;
                                                                 padding-bottom: 0px;
                                                             "
-                                                            >Detils</span
+                                                            >Details</span
                                                         >
                                                     </td>
                                                     <td>
@@ -144,44 +144,6 @@
                                                                 }}
                                                             </option>
                                                         </select>
-                                                        <!-- <select
-                                                            v-else-if="
-                                                                request.statue ==
-                                                                    'PENDING' &&
-                                                                supplieruser &&
-                                                                (request.getuser
-                                                                    .role ===
-                                                                    'ADMIN' ||
-                                                                    request
-                                                                        .getuser
-                                                                        .role ===
-                                                                        'USER')
-                                                            "
-                                                            class="form-control w-50"
-                                                            @change="
-                                                                changestatue(
-                                                                    request,
-                                                                    $event
-                                                                        .target
-                                                                        .value
-                                                                )
-                                                            "
-                                                        >
-                                                            <option
-                                                                v-for="statue in statues"
-                                                                :value="
-                                                                    statue.value
-                                                                "
-                                                                :selected="
-                                                                    request.statue ===
-                                                                    statue.value
-                                                                "
-                                                            >
-                                                                {{
-                                                                    statue.name
-                                                                }}
-                                                            </option>
-                                                        </select> -->
                                                         <p
                                                             v-else
                                                             class="text-primary"
@@ -280,6 +242,127 @@
                                                             </p>
                                                         </div>
                                                     </td>
+                                                    <div
+                                                        id="showQuotation"
+                                                        class="modal fade"
+                                                        tabindex="-1"
+                                                        role="dialog"
+                                                        aria-labelledby="myLargeModalLabel"
+                                                        aria-hidden="true"
+                                                    >
+                                                        <div
+                                                            class="modal-dialog modal-lg"
+                                                        >
+                                                            <div
+                                                                class="modal-content"
+                                                            >
+                                                                <div
+                                                                    class="modal-header"
+                                                                >
+                                                                    <h5
+                                                                        class="modal-title"
+                                                                        id="exampleModalLabel"
+                                                                        style="
+                                                                            font-weight: bold;
+                                                                        "
+                                                                    >
+                                                                        Send
+                                                                        Quotation
+                                                                    </h5>
+
+                                                                    <button
+                                                                        type="button"
+                                                                        class="close"
+                                                                        data-dismiss="modal"
+                                                                        aria-label="Close"
+                                                                    >
+                                                                        <span
+                                                                            aria-hidden="true"
+                                                                            class="text-danger"
+                                                                            >&times;</span
+                                                                        >
+                                                                    </button>
+                                                                </div>
+
+                                                                <div
+                                                                    class="modal-body"
+                                                                >
+                                                                    <div
+                                                                        class="form-row"
+                                                                    >
+                                                                        <div
+                                                                            class="col-6 form-group"
+                                                                        >
+                                                                            <label
+                                                                                for="inputName"
+                                                                                class="col-form-label"
+                                                                                >Taxes</label
+                                                                            >
+                                                                            <div
+                                                                                class=" "
+                                                                            >
+                                                                                <input
+                                                                                    type="number"
+                                                                                    class="form-control"
+                                                                                    v-model="
+                                                                                        Quotation.Taxes
+                                                                                    "
+                                                                                    id="inputName"
+                                                                                    placeholder="Tax"
+                                                                                />
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div
+                                                                            class="col-6 form-group"
+                                                                        >
+                                                                            <label
+                                                                                for="inputName"
+                                                                                class="col-form-label"
+                                                                                >Delivery
+                                                                                Salary</label
+                                                                            >
+                                                                            <div
+                                                                                class=" "
+                                                                            >
+                                                                                <input
+                                                                                    type="number"
+                                                                                    class="form-control"
+                                                                                    v-model="
+                                                                                        Quotation.Delivery
+                                                                                    "
+                                                                                    id="inputName"
+                                                                                    placeholder="Delivery"
+                                                                                />
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div
+                                                                    class="modal-footer"
+                                                                >
+                                                                    <button
+                                                                        @click.prevent="
+                                                                            CreateQuotation(
+                                                                                request
+                                                                            )
+                                                                        "
+                                                                        type="submit"
+                                                                        class="btn btn-danger"
+                                                                    >
+                                                                        Send Now
+                                                                    </button>
+                                                                    <button
+                                                                        type="button"
+                                                                        class="btn btn-secondary"
+                                                                        data-dismiss="modal"
+                                                                    >
+                                                                        Close
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -355,6 +438,7 @@
                 </div>
             </div>
         </div>
+
         <div
             id="detailsmodal"
             class="modal fade"
@@ -390,6 +474,7 @@
                             class="col-6"
                             style="border-right: 2px solid rgb(203, 203, 203)"
                         >
+                            <h5 class="text-info">Request Information:</h5>
                             <div>
                                 <p style="font-weight: bold">
                                     Request by :
@@ -402,7 +487,17 @@
                             </div>
                             <div>
                                 <p style="font-weight: bold">
-                                    Request owner phone:
+                                    {{ request.clientname.name }} position :
+                                    <span
+                                        style="font-weight: normal"
+                                        v-if="request.clientname"
+                                        >{{ request.clientname.position }}</span
+                                    >
+                                </p>
+                            </div>
+                            <div>
+                                <p style="font-weight: bold">
+                                    {{ request.clientname.name }} phone:
                                     <span
                                         style="font-weight: normal"
                                         v-if="request.clientname"
@@ -412,7 +507,7 @@
                             </div>
                             <div>
                                 <p style="font-weight: bold">
-                                    Request owner email:
+                                    {{ request.clientname.name }} email:
                                     <span
                                         style="font-weight: normal"
                                         v-if="request.clientname"
@@ -422,194 +517,71 @@
                             </div>
                             <div>
                                 <p style="font-weight: bold">
-                                    product description:
-                                    <span style="font-weight: normal">{{
-                                        request.productdescription
-                                    }}</span>
-                                </p>
-                            </div>
-                            <div v-if="request.suppliername">
-                                <hr />
-
-                                <h5 class="text-info">Supplier Details:</h5>
-
-                                <div>
-                                    <p style="font-weight: bold">
-                                        supplier name:
-                                        <span style="font-weight: normal">{{
-                                            request.suppliername.name
-                                        }}</span>
-                                    </p>
-                                </div>
-                                <div>
-                                    <p style="font-weight: bold">
-                                        client phone:
-                                        <span style="font-weight: normal">{{
-                                            request.suppliername.phone
-                                        }}</span>
-                                    </p>
-                                </div>
-                                <div>
-                                    <p style="font-weight: bold">
-                                        client phone:
-                                        <span style="font-weight: normal">{{
-                                            request.suppliername.email
-                                        }}</span>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <div v-for="product in Allproduct">
-                                <div v-if="product.id == request.productid">
-                                    <div>
-                                        <p style="font-weight: bold">
-                                            product name:
-                                            <span
-                                                style="font-weight: normal"
-                                                v-if="request.productid"
-                                            >
-                                                {{ product.productname }}
-                                            </span>
-                                        </p>
-                                    </div>
-                                    <div>
-                                        <p style="font-weight: bold">
-                                            product code:
-
-                                            <span
-                                                style="font-weight: normal"
-                                                v-if="request.productid"
-                                            >
-                                                {{ product.productcode }}
-                                            </span>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div>
-                                <p style="font-weight: bold">
-                                    Quantity:
-                                    <span style="font-weight: normal">
-                                        {{ request.quantity }}
+                                    Request Date:
+                                    <span
+                                        style="font-weight: normal"
+                                        v-if="request.clientname"
+                                    >
+                                        {{
+                                            moment(request.created_at).format(
+                                                "YYYY-MM-DD HH:mm:ss a"
+                                            )
+                                        }}
                                     </span>
                                 </p>
                             </div>
-
-                            <div v-if="request.clientname">
-                                <hr />
+                        </div>
+                        <div class="col-6 d-flex align-items-center">
+                            <div
+                                v-if="
+                                    currentuseradmin &&
+                                    request.clientname.role != 'ADMIN'
+                                "
+                            >
                                 <h5 class="text-info">Send To:</h5>
                                 <div v-for="user in users">
-                                    <div v-if="user.id == request.client_id">
+                                    <div>
                                         <div>
                                             <p style="font-weight: bold">
-                                                clientname:
+                                                Clientname:
                                                 <span
                                                     style="font-weight: normal"
                                                 >
                                                     <span>
-                                                        {{ user.name }}
+                                                        {{
+                                                            request.clientname
+                                                                .name
+                                                        }}
                                                     </span>
                                                 </span>
                                             </p>
                                         </div>
                                         <div>
                                             <p style="font-weight: bold">
-                                                client phone:
+                                                Client phone:
                                                 <span
                                                     style="font-weight: normal"
                                                 >
                                                     <span>
-                                                        {{ user.phone }}
+                                                        {{
+                                                            request.clientname
+                                                                .phone
+                                                        }}
                                                     </span>
                                                 </span>
                                             </p>
                                         </div>
                                         <div>
                                             <p style="font-weight: bold">
-                                                client Email:
+                                                Client Email:
                                                 <span
                                                     style="font-weight: normal"
                                                 >
                                                     <span>
-                                                        {{ user.email }}
-                                                    </span>
-                                                </span>
-                                            </p>
-                                        </div>
-                                        <div>
-                                            <p style="font-weight: bold">
-                                                Client Address:
-                                                <span
-                                                    style="font-weight: normal"
-                                                >
-                                                    <span>
-                                                        {{ user.Address }}
-                                                    </span>
-                                                </span>
-                                            </p>
-                                        </div>
-                                        <div>
-                                            <p style="font-weight: bold">
-                                                client City:
-                                                <span
-                                                    style="font-weight: normal"
-                                                >
-                                                    <span>
-                                                        {{ user.city }}
-                                                    </span>
-                                                </span>
-                                            </p>
-                                        </div>
-                                        <div>
-                                            <p style="font-weight: bold">
-                                                client location:
-                                                <span
-                                                    style="font-weight: normal"
-                                                >
-                                                    <span>
-                                                        {{ user.Location }}
-                                                    </span>
-                                                </span>
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div
-                                        v-if="user.id == request.clientname.id"
-                                    >
-                                        <div>
-                                            <p style="font-weight: bold">
-                                                clientname:
-                                                <span
-                                                    style="font-weight: normal"
-                                                >
-                                                    <span>
-                                                        {{ user.name }}
-                                                    </span>
-                                                </span>
-                                            </p>
-                                        </div>
-                                        <div>
-                                            <p style="font-weight: bold">
-                                                client phone:
-                                                <span
-                                                    style="font-weight: normal"
-                                                >
-                                                    <span>
-                                                        {{ user.phone }}
-                                                    </span>
-                                                </span>
-                                            </p>
-                                        </div>
-                                        <div>
-                                            <p style="font-weight: bold">
-                                                client Email:
-                                                <span
-                                                    style="font-weight: normal"
-                                                >
-                                                    <span>
-                                                        {{ user.email }}
+                                                        {{
+                                                            request.clientname
+                                                                .email
+                                                        }}
                                                     </span>
                                                 </span>
                                             </p>
@@ -621,48 +593,130 @@
                                                     style="font-weight: normal"
                                                 >
                                                     <span>
-                                                        {{ user.Address }}
+                                                        {{
+                                                            request.clientname
+                                                                .Address
+                                                        }}
                                                     </span>
                                                 </span>
                                             </p>
                                         </div>
                                         <div>
                                             <p style="font-weight: bold">
-                                                client City:
+                                                Client City:
                                                 <span
                                                     style="font-weight: normal"
                                                 >
                                                     <span>
-                                                        {{ user.city }}
-                                                    </span>
-                                                </span>
-                                            </p>
-                                        </div>
-                                        <div>
-                                            <p style="font-weight: bold">
-                                                client location:
-                                                <span
-                                                    style="font-weight: normal"
-                                                >
-                                                    <span>
-                                                        {{ user.Location }}
+                                                        {{
+                                                            request.clientname
+                                                                .city
+                                                        }}
                                                     </span>
                                                 </span>
                                             </p>
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+                            <div v-if="!currentuseradmin" class="text-center">
+                                <p>
+                                    you will receive quotation from admin to
+                                    submit your Request then your request will
+                                    be applied during 3 working days
+                                </p>
+                                <button
+                                    v-if="
+                                        havequtation &&
+                                        (currentuseradmin || currentuser)
+                                    "
+                                    @click="showQuotation(request)"
+                                    type="submit"
+                                    class="btn btn-danger"
+                                >
+                                    view Quotation
+                                </button>
+                                <button
+                                    v-else
+                                    type="submit"
+                                    class="btn btn-danger"
+                                    disabled
+                                >
+                                    view Quotation
+                                </button>
+                            </div>
+                            <div
+                                v-if="
+                                    currentuseradmin &&
+                                    request.clientname.role == 'ADMIN'
+                                "
+                                class="text-center"
+                            >
+                                <p>
+                                    Once You accept Request directly products
+                                    will be send to all clients
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-12" v-if="currentuser">
+                            <h5 class="text-info text-bold text-center">
+                                All products
+                            </h5>
+                            <div>
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">#</th>
+                                            <th scope="col">product name</th>
+                                            <th scope="col">Quantity</th>
+                                            <th scope="col">Pricing per one</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr
+                                            v-for="(
+                                                product, index
+                                            ) in request.Request_prouducts"
+                                            :key="product.id"
+                                        >
+                                            <th scope="row">{{ index + 1 }}</th>
+                                            <td>
+                                                {{
+                                                    product.getproduct
+                                                        .productname
+                                                }}
+                                            </td>
+                                            <td>{{ product.quantity }}</td>
+                                            <td>
+                                                {{ product.getproduct.price }}
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <!-- <button
-                     
+                        <button
+                            v-if="currentuseradmin && !havequtation"
+                            @click="showquotationmodal(request)"
+                            type="submit"
+                            class="btn btn-info"
+                        >
+                            Send Quotation
+                        </button>
+
+                        <button
+                            v-if="
+                                havequtation &&
+                                (currentuseradmin || currentuser)
+                            "
+                            @click="showQuotation(request)"
                             type="submit"
                             class="btn btn-danger"
                         >
-                            Accept Request
-                        </button> -->
+                            view Quotation
+                        </button>
                         <button
                             type="button"
                             class="btn btn-secondary"
@@ -674,6 +728,300 @@
                 </div>
             </div>
         </div>
+
+        <div
+            id="showQutaion"
+            class="modal fade"
+            tabindex="1"
+            role="dialog"
+            aria-labelledby="myLargeModalLabel"
+            aria-hidden="true"
+        >
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5
+                            class="modal-title"
+                            id="showQutaiontitle"
+                            style="font-weight: bold"
+                        >
+                            Quotation Details
+                        </h5>
+                        <button
+                            type="button"
+                            class="close"
+                            data-dismiss="modal"
+                            aria-label="Close"
+                        >
+                            <span aria-hidden="true" class="text-danger"
+                                >&times;</span
+                            >
+                        </button>
+                    </div>
+                    <div v-if="quotationsearch" class="modal-body">
+                        <div class="row align-items-center">
+                            <div class="col-6 text-left pl-3">
+                                <img
+                                    src="@/assets/image/Logo.svg"
+                                    width="150"
+                                />
+                            </div>
+                            <div class="col-6 text-right pr-3">
+                                <h3><strong>Quotation</strong></h3>
+                            </div>
+                        </div>
+                        <div
+                            class="row align-items-start justify-content-between m-3 p-2"
+                            style="
+                                font-size: small;
+                                border: solid 1px;
+                                border-radius: 5px;
+                            "
+                        >
+                            <div>
+                                <p style="margin: 0; padding: 0">
+                                    <strong>Quotation by : </strong>
+                                    {{ quotationsearch.qutation.getuser.name }}
+                                </p>
+                                <p>
+                                    <strong>Date : </strong>
+                                    {{
+                                        moment(
+                                            quotationsearch.qutation.created_at
+                                        ).format("YYYY-MM-DD HH:mm:ss a")
+                                    }}
+                                </p>
+                            </div>
+                            <div>
+                                <p style="margin: 0; padding: 0">
+                                    <strong>Quotation to : </strong>
+                                    {{
+                                        quotationsearch.qutation.getrequest
+                                            .getuser.name
+                                    }}
+                                </p>
+                                <p style="margin: 0; padding: 0">
+                                    <strong>Phone : </strong>
+                                    {{
+                                        quotationsearch.qutation.getrequest
+                                            .getuser.phone
+                                    }}
+                                </p>
+                                <p style="margin: 0; padding: 0">
+                                    <strong>Address : </strong>
+                                    {{
+                                        quotationsearch.qutation.getrequest
+                                            .getuser.Address
+                                    }}
+                                </p>
+                            </div>
+                            <div>
+                                <p style="margin: 0; padding: 0">
+                                    <strong>Invoice No : </strong>
+                                </p>
+                                <p style="margin: 0; padding: 0">
+                                    <strong>Invoice Date : </strong>
+                                    {{
+                                        moment(
+                                            quotationsearch.qutation.created_at
+                                        ).format("YYYY-MM-DD")
+                                    }}
+                                </p>
+                                <p style="margin: 0; padding: 0">
+                                    <strong>Supplier Name : </strong>
+                                    {{
+                                        quotationsearch.qutation.getrequest
+                                            .getsupplier.name
+                                    }}
+                                </p>
+                                <p style="margin: 0; padding: 0">
+                                    <strong>Supplier Phone : </strong>
+                                    {{
+                                        quotationsearch.qutation.getrequest
+                                            .getsupplier.phone
+                                    }}
+                                </p>
+                            </div>
+                        </div>
+
+                        <div
+                            class="row align-items-start justify-content-between m-2 p-2"
+                            style="font-size: small"
+                        >
+                            <table id="example1" class="table">
+                                <thead>
+                                    <tr class="bg-info">
+                                        <th>#</th>
+                                        <th>title</th>
+                                        <th>Quantity</th>
+                                        <th>Item price</th>
+                                        <th>total</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    <tr
+                                        v-for="(
+                                            product, index
+                                        ) in quotationsearch.qutation.getrequest
+                                            .product__request"
+                                        :key="product.id"
+                                    >
+                                        <td>{{ index++ }}</td>
+                                        <td>
+                                            {{ product.getproduct.productname }}
+                                        </td>
+                                        <td>
+                                            {{ product.quantity }}
+                                        </td>
+
+                                        <td>
+                                            {{ product.getproduct.price }}
+                                            <strong>SAR</strong>
+                                        </td>
+
+                                        <td>
+                                            {{
+                                                product.quantity *
+                                                product.getproduct.price
+                                            }}
+                                            <strong>SAR</strong>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div
+                            style="font-size: small"
+                            class="row justify-content-between align-items-start text-justify m-3"
+                        >
+                            <div class="col-6">
+                                <div>
+                                    <h5>
+                                        <strong>Terms and Condition</strong>
+                                    </h5>
+                                    <p>
+                                        Please pay within 15 days from the date
+                                        pf invoice, overdue interest @14% will
+                                        be charged on delayed payments
+                                    </p>
+                                    <p>
+                                        it is a long established fact that a
+                                        reader will be distracted by the
+                                        readable content of a page when looking
+                                        at it is layout. The
+                                    </p>
+                                </div>
+                                <div></div>
+                            </div>
+                            <div class="col-4">
+                                <table id="example1" class="table">
+                                    <tbody>
+                                        <tr>
+                                            <td>SubTotal</td>
+                                            <td>
+                                                {{
+                                                    quotationsearch.totalquottionaprice
+                                                }}
+                                                <strong>SAR</strong>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Tax</td>
+                                            <td>
+                                                {{
+                                                    quotationsearch.qutation
+                                                        .Taxes
+                                                }}
+                                                %
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Delivery</td>
+                                            <td>
+                                                {{
+                                                    quotationsearch.qutation
+                                                        .Delivery
+                                                }}
+                                                SAR
+                                            </td>
+                                        </tr>
+                                        <tr
+                                            class="bg-info"
+                                            style="
+                                                font-size: medium;
+                                                padding-bottom: -10%;
+                                            "
+                                        >
+                                            <td>Total Amount</td>
+                                            <td>
+                                                <p>
+                                                    <strong>
+                                                        {{
+                                                            parseInt(
+                                                                quotationsearch.totalquottionaprice +
+                                                                    quotationsearch
+                                                                        .qutation
+                                                                        .Delivery
+                                                            ) *
+                                                            parseInt(
+                                                                quotationsearch
+                                                                    .qutation
+                                                                    .Taxes
+                                                            ) *
+                                                            0.01
+                                                        }}
+                                                        SAR</strong
+                                                    >
+                                                </p>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="align-items-center m-3">
+                            <p
+                                class="text-center p-2"
+                                style="border: 1px solid; border-radius: 5px"
+                            >
+                                For any enquiries, email us on
+                                <strong>info@hounter.com</strong> or call us
+                                <strong>(671) 555-0110</strong>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div v-if="!currentuseradmin">
+                            <button
+                                type="button"
+                                class="btn btn-success mr-2"
+                                data-dismiss="modal"
+                                @click.prevent="changequotationstatue(true)"
+                            >
+                                Accept
+                            </button>
+                            <button
+                                type="button"
+                                class="btn btn-danger"
+                                data-dismiss="modal"
+                                @click.prevent="changequotationstatue(false)"
+                            >
+                                Reject
+                            </button>
+                        </div>
+                        <button
+                            type="button"
+                            class="btn btn-secondary"
+                            data-dismiss="modal"
+                        >
+                            Close
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div
             id="editformmodal"
             class="modal fade"
@@ -720,7 +1068,7 @@
 
                                     <select
                                         name="productname"
-                                        v-model="request.productid"
+                                        v-model="request.Request_prouducts"
                                         class="form-control"
                                     >
                                         <option
@@ -904,21 +1252,34 @@
         </div>
     </div>
 </template>
+<style scoped>
+.modal-body {
+    max-height: 450px; /* Adjust the height as needed */
+    overflow-y: auto;
+}
+</style>
 <script setup>
 import axios from "axios";
-import { onMounted, ref } from "vue";
+import { onMounted, reactive, ref } from "vue";
 import moment from "moment";
 import { usetoaster } from "../../../../toaster.js";
 const format = window.Laravel.format;
+const index = 1;
 const supplieruser = window.Laravel.user.role == "SUPPLIER";
 const currentuser = window.Laravel.user;
 const currentuseradmin = window.Laravel.user
     ? window.Laravel.user.role == "ADMIN"
     : "";
 const Allproduct = ref([]);
-
+const Quotation = ref({
+    Taxes: "",
+    Delivery: "",
+    request: null,
+    user: currentuser.id,
+});
 const request = ref({
-    productid: "",
+    requestid: "",
+    Request_prouducts: [],
     productdescription: "",
     clientname: "",
     suppliername: "",
@@ -927,6 +1288,7 @@ const request = ref({
     currentuser: currentuser.id,
     productname: "",
     client_id: "",
+    created_at: "",
 });
 
 const statues = ref([
@@ -986,11 +1348,25 @@ const changestatue = (request, statue) => {
                 if (response.data.erroor) {
                     toaster.error(response.data.erroor);
                 } else {
-                    console.log();
                     toaster.success("statue Changed Successfuly");
                 }
             });
     }
+};
+const showquotationmodal = () => {
+    Quotation.value.request = request;
+    $("#detailsmodal").modal("toggle");
+    $("#showQuotation").modal("toggle");
+};
+const CreateQuotation = () => {
+    axios.post("/quotation", Quotation.value).then((response) => {
+        $("#showQuotation").modal("toggle");
+        toaster.success("Quotation Send Successfully");
+        (Quotation.value.Taxes = ""),
+            (Quotation.value.Delivery = ""),
+            (Quotation.value.request = null),
+            (Quotation.value.user = currentuser.id);
+    });
 };
 const getproduct = () => {
     axios.get("/product").then((response) => {
@@ -1010,13 +1386,18 @@ const getusers = () => {
         // users.value = response.data;
     });
 };
+const changequotationstatue = (statue) => {
+    axios.put(`/quotation/${statue}`).then((res) => {
+        toaster.success("statue changed successfully!");
+    });
+};
 const deleterequest = (request) => {
     requestidbeingDelete.value = request.id;
     $("#deleteModal").modal("show");
 };
 const editrequest = (data) => {
     requestidvalue.value = data.id;
-    request.value.productid = data.getproduct.id;
+    request.value.Request_prouducts = data.getproduct.id;
     request.value.productdescription = data.productdescription;
     if (data.image != null) {
         // request.value.image = data.image;
@@ -1033,35 +1414,46 @@ const confirmdelete = () => {
             allrequest.value = allrequest.value.filter(
                 (request) => request.id !== requestidbeingDelete.value
             );
-            // const index = users.value.findIndex(
-            //     (user) => user.id === response.data.id
-            // );
-            // users.value[index] = response.data;
+
             $("#deleteModal").modal("hide");
             toaster.success("User deleted successfully!");
         });
 };
+const havequtation = ref(false);
+
 const showdetailsmodal = (requestt) => {
-    request.value.productid = requestt.getproduct.id;
-    request.value.productdescription = requestt.productdescription;
-    if (requestt.getsupplier != null) {
-        request.value.suppliername = requestt.getsupplier;
-    } else {
-        request.value.suppliername = "";
-    }
+    havequtation.value = false;
+
+    request.value.requestid = requestt.id;
+
+    request.value.Request_prouducts = requestt.product__request;
+
     if (requestt.getuser != null) {
         request.value.clientname = requestt.getuser;
     } else {
-        request.value.clientname = "";
-    }
-    if (requestt.client_id != null) {
-        request.value.client_id = requestt.client_id;
-    } else {
-        request.value.client_id = "";
+        request.value.clientname = null;
     }
 
-    request.value.quantity = requestt.quantity;
+    request.value.created_at = requestt.created_at;
+
+    axios.get(`/getqutation/${requestt.id}`).then((response) => {
+        if (response.data) {
+            havequtation.value = true;
+        } else {
+            havequtation.value = false;
+        }
+    });
     $("#detailsmodal").modal("show");
+};
+const quotationsearch = ref();
+const qutation = ref(false);
+const showQuotation = (request) => {
+    axios.get(`/getqutation/${request.requestid}`).then((response) => {
+        quotationsearch.value = response.data;
+        $("#detailsmodal").modal("hide");
+
+        $("#showQutaion").modal("show");
+    });
 };
 const handleimage = (event) => {
     const file = event.target.files[0];

@@ -12,11 +12,13 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PackagesController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\QutationController;
 use App\Http\Controllers\RequestsController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\UserInventoryController;
 use App\Models\ClinicInventory;
+use App\Models\Order;
 use App\Models\Session;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -47,7 +49,7 @@ Route::group(['middleware'=>['is_admin']], function () {
     Route::delete('/api/users/delete/{user}',[Usercontroller::class,'destroy']);
     Route::post('/product',[ProductController::class,'store']);
     Route::get('/product',[ProductController::class,'index']);
-
+    Route::post('/quotation',[QutationController::class,'store']);
     Route::put('/product/update/{product}',[ProductController::class,'update']);
      Route::delete('/requests/delete/{id}',[RequestsController::class,'destroy']);
     Route::post('/api/event/edit/{id}',[EventsController::class,'update']);
@@ -86,7 +88,8 @@ Route::group(['middleware'=>['auth']], function () {
     Route::post("/api/paypackage",[PackagesController::class,'store']);
     Route::delete('/product/delete/{id}',[ProductController::class,'destroy']);
     Route::patch('/product/addquantity',[ProductController::class,'addquantity']);
-
+    Route::get('/getqutation/{request}',[QutationController::class,'show']);
+    Route::put('/quotation/{statue}',[QutationController::class,'changestatue']);
     Route::get('/api/time/{calenderid}',[SessionController::class,'gettime']);
     Route::get('/api/calendar/{id}',[SessionController::class,'calendar']);
     

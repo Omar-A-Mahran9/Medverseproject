@@ -264,6 +264,12 @@
         </div>
     </div>
 </template>
+<style scoped>
+  p {
+    margin: 0;
+    padding: 0;
+  }
+</style>
 <script setup>
 import axios, { Axios } from "axios";
 import { defineProps, onMounted, ref } from "vue";

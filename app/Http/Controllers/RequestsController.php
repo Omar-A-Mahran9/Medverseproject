@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Admin\Groupproduct;
 use App\Models\Admin\product;
+use App\Models\Product_Request;
 use App\Models\Report;
 use App\Models\Requeest;
 use App\Models\User;
@@ -14,6 +15,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
+
 use PDF;
 
 class RequestsController extends Controller
@@ -23,28 +26,23 @@ class RequestsController extends Controller
      */
     public function index($id)
     { 
- 
-        $allrequest=array();
+         $allrequest=array();
         if(Auth::user()->role=='ADMIN'){
-            $allrequests=Requeest::get();
+            $allrequests=Requeest::with('Product_Request','getuser','getsupplier','getclient')->get();
         }
         elseif(Auth::user()->role=='SUPPLIER')
         {
-            $allrequests=Requeest::where('supplier_id',$id)->get();
- 
+            $allrequests=Requeest::with('Product_Request','getuser','getsupplier','getclient')->where('supplier_id',$id)->get();
         }
         else{
              
-            $allrequests=Requeest::where('user_id',$id)->get();
+            $allrequests=Requeest::with('Product_Request','getuser','getsupplier','getclient')->where('user_id',$id)->get();
         }
         foreach($allrequests as $request ){
-             $request->getsupplier;
-             $request->getuser;
-             $request->getproduct;
+           
             array_push($allrequest, $request);
          }
-    
-        return $allrequest;
+         return $allrequest;
     }
     public function filter($idd){
          $allrequest=array();
@@ -266,62 +264,71 @@ class RequestsController extends Controller
      */
     public function store(Request $request)
     {
-         $validate=$request->validate([
-        'productid'=>'required',
-        'productdescription'=>'required',
-        'suppliername'=>'required',
-        'quantity'=>'required',
-    ]);
-    $link=null;
+        $validatedData = $request->validate([
+            'requestsend' => 'required|json',
+        ]);
+        
+        // Decode the JSON data
+        $requestData = json_decode($validatedData['requestsend'], true);
+        
+        // Merge the decoded data into the request
+        $request->merge($requestData);
+        if(Auth::user()->role=="ADMIN"){
+            $request->validate([
+                'clientname' => 'required',
+                'suppliername' => 'required',
 
-    if($request->image){
-        $request->validate([
-        'image' => 'image|mimes:jpg,jpeg,png,bmp',
+            ],[
+                'clientname' => 'The client name is required.',
+                'suppliername' => 'The supplier name is required.',
+
+            ]);
+        }
+        else{
+            $request->validate([
+                'suppliername' => 'required',
+            ],
+            [
+                'suppliername' => 'The supplier name is required.',
+    
+            ]);
+        }
+        // Validate the individual fields within the decoded data
+    
+
+
+        $validate=$request->validate([
+            'request.*.productid' => 'required',
+            'request.*.productdescription' => 'required',
+            'request.*.quantity' => 'required|numeric',
+        ],
+ 
+        [
+            'request.*.productid.required' => 'The product ID is required.',
+            'request.*.productdescription.required' => 'The product description is required.',
+             'request.*.quantity.required' => 'The quantity is required.',
+            'request.*.quantity.numeric' => 'The quantity must be a numeric value.',
         ]);
-        if($request->hasFile('image')){
-            $file = $request->file('image');
-            $link=Storage::put('/requests',$file);
-         } 
-    }
-    if(Auth::user()->role=="ADMIN"){
-        $request->validate([
-            'clientname'=>'required',
-        ]);
-    }
    
-    $data=[
-        'productid'=>$request->productid,
-        'productdescription'=>$request->productdescription,
-        'user_id'=>$request->currentuser,
-        'client_id'=> $request->clientname,
-        'quantity'=>$request->quantity,
-        'supplier_id'=>$request->suppliername,
-        'image'=>$link
-    ];
-    Requeest::create($data);
-    return response()->json(['message'=>'Request send successfully']);
+             $maindata=[
+                'user_id'=>Auth::user()->id,
+                'supplier_id'=>$request->suppliername,
+                'client_id'=>$request->clientname,
+            ];
+ 
+            $req=Requeest::create($maindata);
+        
+            
+            foreach ($request['request'] as $subdata) {
+                $subdata['request_id'] = $req->id;
+                $prod_req=Product_Request::create($subdata);     
+    }
+
+            return response()->json(['message'=>'Request send successfully']);
  
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Requeest $requests)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Requeest $requests)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
+ 
     public function update(Request $request, Requeest $requests,$id)
     {
         $reqID=$requests->find($id);

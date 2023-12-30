@@ -12,18 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('requeests', function (Blueprint $table) {
-            $table->id();
-             
-            $table->foreignId('productid')->nullable()->constrained()->references('id')->on('products')->onDelete("cascade");
-
-            $table->string('productdescription');
-            $table->string('image')->nullable()->default(null);
-            $table->integer('quantity');
+            $table->id(); 
             $table->enum('statue', ['PENDING', 'ACCEPTED'])->default('PENDING');
             $table->foreignId('user_id')->nullable()->constrained()->references('id')->on('users');
             $table->foreignId('supplier_id')->nullable()->constrained()->references('id')->on('users')->default(null);
             $table->foreignId('client_id')->nullable()->constrained()->references('id')->on('users')->default(null);
-
             $table->timestamps();
         });
     }
@@ -31,6 +24,7 @@ return new class extends Migration
     /**
      * Reverse the migrations.
      */
+    
     public function down(): void
     {
         Schema::dropIfExists('requeests');

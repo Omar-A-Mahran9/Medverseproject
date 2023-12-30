@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('clinicname')->nullable();
             $table->string('universityname')->nullable();
             $table->string('companyname')->nullable();
+            $table->string('position')->nullable();
             $table->string('Address')->nullable();
             $table->enum('type', ['DOCTOR','USER', 'STUDENT','Others'])->default('USER');
             $table->string('image')->nullable();

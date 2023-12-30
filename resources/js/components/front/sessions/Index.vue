@@ -1295,7 +1295,6 @@ const adddate = () => {
         alert("sorry must be fill date firstly");
     } else {
         session.value.sessioncalender.push(calender.value);
-        console.log(session.value.sessioncalender);
     }
 };
 const timeofcalender = (data) => {

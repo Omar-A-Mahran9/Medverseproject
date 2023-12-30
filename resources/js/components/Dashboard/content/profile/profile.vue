@@ -97,6 +97,7 @@
                                                     id="inputName"
                                                     placeholder="Name"
                                                 />
+
                                                 <span
                                                     class="text-danger text-sm"
                                                     v-if="errorr && errorr.name"
@@ -123,7 +124,7 @@
                                                     v-if="
                                                         errorr && errorr.email
                                                     "
-                                                    >{{ errorr.name[0] }}</span
+                                                    >{{ errorr.email[0] }}</span
                                                 >
                                             </div>
                                         </div>
@@ -144,7 +145,7 @@
                                                 <span
                                                     class="text-danger text-sm"
                                                     v-if="errorr && errorr.city"
-                                                    >{{ errorr.name[0] }}</span
+                                                    >{{ errorr.city[0] }}</span
                                                 >
                                             </div>
                                         </div>
@@ -168,7 +169,9 @@
                                                         errorr &&
                                                         errorr.username
                                                     "
-                                                    >{{ errorr.name[0] }}</span
+                                                    >{{
+                                                        errorr.username[0]
+                                                    }}</span
                                                 >
                                             </div>
                                         </div>
@@ -191,7 +194,33 @@
                                                     v-if="
                                                         errorr && errorr.phone
                                                     "
-                                                    >{{ errorr.name[0] }}</span
+                                                    >{{ errorr.phone[0] }}</span
+                                                >
+                                            </div>
+                                        </div>
+                                        <div class="col-4 form-group">
+                                            <label
+                                                for="inputphone"
+                                                class="col-form-label"
+                                                >Job title</label
+                                            >
+                                            <div class=" ">
+                                                <input
+                                                    type="text"
+                                                    class="form-control"
+                                                    v-model="form.position"
+                                                    id="inputUserposition"
+                                                    placeholder="Doctor,Owner,nurse... "
+                                                />
+                                                <span
+                                                    class="text-danger text-sm"
+                                                    v-if="
+                                                        errorr &&
+                                                        errorr.position
+                                                    "
+                                                    >{{
+                                                        errorr.position[0]
+                                                    }}</span
                                                 >
                                             </div>
                                         </div>
@@ -341,7 +370,6 @@ const handleimage = (event) => {
     imageprofieurl.value = URL.createObjectURL(file);
     const formData = new FormData();
     formData.append("Profile_image", file);
-
     axios
         .post("/api/uploadimage", formData)
         .then(() => {
@@ -360,6 +388,7 @@ const form = ref({
     username: "",
     phone: "",
     image: "",
+    position: "",
 });
 const updatepass = () => {
     axios
@@ -376,6 +405,7 @@ const updatepass = () => {
 };
 
 const editprofile = () => {
+    errorr.value = null;
     axios
         .post("/api/profile", form.value)
         .then((res) => {

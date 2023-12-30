@@ -14,27 +14,104 @@
             </div>
         </div>
     </div>
-    <div class="card card-danger m-5">
-        <div class="card-header">
-            <h3 class="card-title">Add new Request</h3>
-        </div>
 
+    <div class="card card-danger m-5">
+        <div
+            class="card-header d-flex align-items-center justify-content-between"
+        >
+            <h3 class="card-title">Add new Request</h3>
+            <div class="btn btn-success ml-auto" @click="addproduct">
+                + Add new product
+            </div>
+        </div>
         <!-- /.card-header -->
         <!-- form start -->
-
         <form ref="form" @submit.prevent="submitform" v-if="users.length > 0">
             <div class="card-body">
+                <div class="form-row">
+                    <div class="form-group col-6" v-if="currentuseradmin">
+                        <label for="clientname">Client Name</label>
+
+                        <select
+                            name="clientname"
+                            v-model="sendrequest.clientname"
+                            class="form-control"
+                        >
+                            <option hidden value="null">
+                                choose client name
+                            </option>
+
+                            <option
+                                v-for="user in users"
+                                :key="user.id"
+                                :value="user.id"
+                            >
+                                {{ user.name }}
+                            </option>
+                        </select>
+                        <span v-if="errors && errors.clientname">
+                            <p class="text text-danger">
+                                {{ errors.clientname[0] }} *
+                            </p>
+                        </span>
+                    </div>
+                    <div class="form-group col-6">
+                        <label for="suppliername">Select Supplier</label>
+
+                        <select
+                            name="suppliername"
+                            v-model="sendrequest.suppliername"
+                            class="form-control"
+                        >
+                            <option hidden value="">
+                                choose supplier name
+                            </option>
+                            <option
+                                v-for="user in suplier"
+                                :key="user.id"
+                                :value="user.id"
+                            >
+                                {{ user.name }}
+                            </option>
+                        </select>
+                        <span v-if="errors && errors.suppliername">
+                            <p class="text text-danger">
+                                {{ errors.suppliername[0] }} *
+                            </p>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <hr />
+            <div
+                class="card-body"
+                v-for="(index, ind) in numofproduct"
+                :key="index"
+            >
+                <div class="text-center">
+                    <p class="btn" style="margin: auto">{{ index }}</p>
+                    <!-- <div
+                        class="btn btn-danger ml-auto"
+                        @click="minproduct(ind)"
+                    >
+                        -
+                    </div> -->
+                </div>
                 <div class="form-group">
                     <label for="productid">Product Name</label>
-                    <p
-                        v-if="errors && errors.productid"
-                        class="text text-danger"
+
+                    <div
+                        v-if="
+                            errors && errors[`request.${index - 1}.productid`]
+                        "
                     >
-                        {{ errors.productid }}*
-                    </p>
+                        <p class="text text-danger">
+                            {{ errors[`request.${index - 1}.productid`][0] }} *
+                        </p>
+                    </div>
                     <select
                         name="productid"
-                        v-model="request.productid"
+                        v-model="request[index - 1].productid"
                         class="form-control"
                     >
                         <option hidden value="">choose product</option>
@@ -49,14 +126,24 @@
                 </div>
                 <div class="form-group">
                     <label for="productdescription">Product Description</label>
-                    <p
-                        v-if="errors && errors.productdescription"
-                        class="text text-danger"
+
+                    <div
+                        v-if="
+                            errors &&
+                            errors[`request.${index - 1}.productdescription`]
+                        "
                     >
-                        {{ errors.productdescription[0] }}*
-                    </p>
+                        <p class="text text-danger">
+                            {{
+                                errors[
+                                    `request.${index - 1}.productdescription`
+                                ][0]
+                            }}
+                            *
+                        </p>
+                    </div>
                     <textarea
-                        v-model="request.productdescription"
+                        v-model="request[index - 1].productdescription"
                         name="productdescription"
                         type="text"
                         class="form-control"
@@ -65,85 +152,30 @@
                     ></textarea>
                 </div>
                 <div class="form-row">
-                    <div class="col-8">
-                        <div class="form-row">
-                            <div
-                                class="form-group col-6"
-                                v-if="currentuseradmin"
-                            >
-                                <label for="clientname">Client Name</label>
-                                <p
-                                    v-if="errors && errors.clientname"
-                                    class="text text-danger"
-                                >
-                                    {{ errors.clientname[0] }}*
-                                </p>
-
-                                <select
-                                    name="clientname"
-                                    v-model="request.clientname"
-                                    class="form-control"
-                                >
-                                    <option hidden value="">
-                                        choose client name
-                                    </option>
-
-                                    <option
-                                        v-for="user in users"
-                                        :key="user.id"
-                                        :value="user.id"
-                                    >
-                                        {{ user.name }}
-                                    </option>
-                                </select>
-                            </div>
-                            <div class="form-group col-6">
-                                <label for="suppliername"
-                                    >Select Supplier</label
-                                >
-                                <p
-                                    v-if="errors && errors.suppliername"
-                                    class="text text-danger"
-                                >
-                                    {{ errors.suppliername[0] }}*
-                                </p>
-
-                                <select
-                                    name="suppliername"
-                                    v-model="request.suppliername"
-                                    class="form-control"
-                                >
-                                    <option hidden value="">
-                                        choose supplier name
-                                    </option>
-                                    <option
-                                        v-for="user in suplier"
-                                        :key="user.id"
-                                        :value="user.id"
-                                    >
-                                        {{ user.name }}
-                                    </option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
+                    <div class="col-8"></div>
                     <div class="form-group col-4">
                         <label for="clientname">Quantity</label>
-                        <p
-                            v-if="errors && errors.quantity"
-                            class="text text-danger"
+                        <div
+                            v-if="
+                                errors &&
+                                errors[`request.${index - 1}.quantity`]
+                            "
                         >
-                            {{ errors.quantity[0] }}*
-                        </p>
+                            <p class="text text-danger">
+                                {{ errors[`request.${index - 1}.quantity`][0] }}
+                                *
+                            </p>
+                        </div>
+
                         <input
                             type="number"
                             class="form-control"
-                            v-model="request.quantity"
+                            v-model="request[index - 1].quantity"
                             placeholder="enter product quantity"
                         />
                     </div>
                 </div>
-                <div class="form-group">
+                <!-- <div class="form-group">
                     <label for="exampleInputFile">Image</label>
 
                     <p v-if="errors && errors.image" class="text text-danger">
@@ -156,16 +188,16 @@
                                 class="custom-file-input"
                                 id="exampleInputFile"
                                 name="image"
-                                @change="handleimage"
+                                @change="handleimage()"
                             />
                             <label
-                                v-if="request.image.name"
+                                v-if="request[index - 1].image.name"
                                 class="custom-file-label"
                                 for="exampleInputFile"
                                 >{{ request.image.name }}</label
                             >
                             <label
-                                v-if="!request.image.name"
+                                v-if="!request[index - 1].image.name"
                                 class="custom-file-label"
                                 for="exampleInputFile"
                                 >Choose file
@@ -175,7 +207,8 @@
                             <span class="input-group-text">Upload</span>
                         </div>
                     </div>
-                </div>
+                </div> -->
+                <hr />
             </div>
             <!-- /.card-body -->
 
@@ -219,20 +252,24 @@ const currentuseradmin = window.Laravel.user
 const currentuser = window.Laravel.user;
 
 const loading = ref(false);
-const request = ref({
-    productid: "",
-    productdescription: "",
-    clientname: "",
-    suppliername: "",
-    image: "",
-    quantity: "",
-});
+const request = ref([
+    {
+        productid: "",
+        productdescription: "",
+        quantity: "",
+    },
+]);
 
+const sendrequest = ref({
+    clientname: null,
+    suppliername: "",
+});
 const form = ref(null);
 const errors = ref(null);
 const users = ref([]);
 const suplier = ref([]);
 const Allproduct = ref([]);
+// const Allproductwithoutchanges = ref([]);
 
 const getusers = () => {
     axios.get("/api/users").then((response) => {
@@ -251,41 +288,76 @@ const getusers = () => {
 const getproduct = () => {
     axios.get("/product").then((response) => {
         Allproduct.value = response.data;
+        // Allproductwithoutchanges.value = response.data;
     });
 };
-const handleimage = (event) => {
-    const file = event.target.files[0];
-    request.value.image = file;
+// const removeproductselected = () => {
+//     for (let i = 0; i < request.value.length; i++) {
+//         const item = request.value[i];
+//         for (let i = 0; i < Allproduct.value.length; i++) {
+//             if (item.productid == Allproduct.value[i].id) {
+//                 Allproduct.value = Allproduct.value.filter((productItem) => {
+//                     return item.productid !== productItem.id;
+//                 });
+//             }
+//         }
+//     }
+// };
+
+const numofproduct = ref(1);
+const newObj = {
+    productid: "",
+    productdescription: "",
+    clientname: "",
+    suppliername: "",
+    quantity: "",
 };
+const addproduct = () => {
+    const newObjectCopy = { ...newObj };
+    request.value.push(newObjectCopy);
+    numofproduct.value++;
+};
+// const minproduct = (index) => {
+//     console.log(index);
+//     const newObjectCopy = { ...newObj };
+//     newObjectCopy.splice(indexToRemove, 1);
+//     numofproduct.value--;
+// };
 const submitform = () => {
     loading.value = true;
     const formData = new FormData();
-    formData.append("productid", request.value.productid);
-    formData.append("productdescription", request.value.productdescription);
-    formData.append("currentuser", currentuser.id);
-    formData.append("clientname", request.value.clientname);
-    formData.append("suppliername", request.value.suppliername);
-    formData.append("quantity", request.value.quantity);
-    formData.append("image", request.value.image);
+    request.value.forEach((item, index) => {
+        Object.entries(item).forEach(([key, value]) => {
+            formData.append(`request[${index}][${key}]`, value);
+        });
+    });
+
+    formData.append("requestsend", JSON.stringify(sendrequest.value));
 
     axios
         .post("/newrequestcreate", formData)
         .then(() => {
             toaster.success("Request Send Successfully");
-            form.value.reset();
+            numofproduct.value = 1;
+            request.value = [
+                {
+                    productid: "",
+                    productdescription: "",
+                    clientname: "",
+                    suppliername: "",
+                    quantity: "",
+                },
+            ]; // Clear the request array
+
             if (errors.value != null) {
                 errors.value = null;
             }
+
             loading.value = false;
-            request.value.productid = "";
-            request.value.productdescription = "";
-            request.value.clientname = "";
-            request.value.suppliername = "";
-            request.value.image = "";
-            request.value.quantity = "";
         })
         .catch((error) => {
             errors.value = error.response.data.errors;
+
             loading.value = false;
         });
 };

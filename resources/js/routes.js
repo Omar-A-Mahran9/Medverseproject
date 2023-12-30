@@ -4,7 +4,6 @@ import MainDashboard from "@/components/Dashboard/content/dashboard/Main.vue";
 import Eventss from "@/components/front/events/Index.vue";
 import sessions from "@/components/front/sessions/Index.vue";
 import appointments from "@/components/front/Appointment/Index.vue";
-
 import inventory from "@/components/Dashboard/content/inventory/Inventory.vue";
 import customerervice from "@/components/Dashboard/content/customerservice/Customerervice.vue";
 import reports from "@/components/Dashboard/content/reports/reports.vue";

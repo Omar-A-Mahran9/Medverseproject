@@ -26,6 +26,7 @@ class User extends Authenticatable
         'username',
         'email',
         'city',
+        'position',
         'image',
         'role',
         'clinicname',
