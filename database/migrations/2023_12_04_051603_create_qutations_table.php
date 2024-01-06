@@ -17,7 +17,11 @@ return new class extends Migration
             $table->foreignId('user_id')->nullable()->constrained()->references('id')->on('users')->onDelete("cascade");
             $table->integer('Taxes')->nullable();
             $table->integer('Delivery')->nullable();
-            $table->boolean('statue')->nullable()->default(0);
+            $table->string('refuse_comment')->nullable(); 
+            $table->enum('statue', ['PENDING', 'ACCEPTED','REJECTED'])->default('PENDING');
+
+            $table->boolean('Paid')->nullable()->default(0);
+
             $table->timestamps();
         });
     }

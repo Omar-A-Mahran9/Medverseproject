@@ -11,11 +11,11 @@ class product extends Model
     use HasFactory;
 
     protected $fillable = [
-'productname',
-'productcode',
-    'group',
-   'Qty',
-   'price'
+        'productname',
+        'productcode',
+            'group',
+        'Qty',
+        'price'
     ];
     public function clinics()
     {

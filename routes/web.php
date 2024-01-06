@@ -51,7 +51,6 @@ Route::group(['middleware'=>['is_admin']], function () {
     Route::get('/product',[ProductController::class,'index']);
     Route::post('/quotation',[QutationController::class,'store']);
     Route::put('/product/update/{product}',[ProductController::class,'update']);
-     Route::delete('/requests/delete/{id}',[RequestsController::class,'destroy']);
     Route::post('/api/event/edit/{id}',[EventsController::class,'update']);
     Route::delete('/api/event/delete/{id}',[EventsController::class,'destroy']);
     Route::post('/addevent',[EventsController::class,'store']);
@@ -89,10 +88,10 @@ Route::group(['middleware'=>['auth']], function () {
     Route::delete('/product/delete/{id}',[ProductController::class,'destroy']);
     Route::patch('/product/addquantity',[ProductController::class,'addquantity']);
     Route::get('/getqutation/{request}',[QutationController::class,'show']);
-    Route::put('/quotation/{statue}',[QutationController::class,'changestatue']);
+    Route::put('/quotation/{quotationsearch}',[QutationController::class,'changestatue']);
     Route::get('/api/time/{calenderid}',[SessionController::class,'gettime']);
     Route::get('/api/calendar/{id}',[SessionController::class,'calendar']);
-    
+    Route::delete('/requests/delete/{id}',[RequestsController::class,'destroy']);
     Route::get('/api/users',[Usercontroller::class,'index']);
 
     Route::get('/profile',[ProfileController::class,'profile'])->name('profile');

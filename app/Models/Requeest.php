@@ -19,6 +19,7 @@ class Requeest extends Model
             function Product_Request(){
                return $this->hasMany(Product_Request::class, 'request_id', 'id')->with('getproduct');
             }
+    
             function getuser(){
                return $this->belongsTo(User::class, 'user_id', 'id');
             }

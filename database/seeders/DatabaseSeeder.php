@@ -15,10 +15,24 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         DB::table('users')->insert([
-            'name' => 'superAdmin',
-            'email' => 'admin@admin.com',
-            'password' => Hash::make('123456'),
-            'role' => 'admin',
+            [
+                'name' => 'superAdmin',
+                'email' => 'admin@admin.com',
+                'password' => Hash::make('123456'),
+                'role' => 'admin',
+            ],
+            [
+                'name' => 'Omarsupplier',
+                'email' => 'omar@supplier.com',
+                'password' => Hash::make('123456'),
+                'role' => 'supplier',
+            ],
+            [
+                'name' => 'Omaruser',
+                'email' => 'omar@user.com',
+                'password' => Hash::make('123456'),
+                'role' => 'user',
+            ],
         ]);
         DB::table('settings')->insert([
             [
@@ -134,6 +148,26 @@ class DatabaseSeeder extends Seeder
                 'Edit account'=>true,
                 'One clinic  (you can add more)'=>true,
                 'One to one Consultation (one session)'=>true,
+            ],
+        ]);
+        DB::table('users')->insert([
+            [
+                'name' => 'superAdmin',
+                'email' => 'admin@admin.com',
+                'password' => Hash::make('123456'),
+                'role' => 'admin',
+            ],
+            [
+                'name' => 'Omarsupplier',
+                'email' => 'omar@supplier.com',
+                'password' => Hash::make('123456'),
+                'role' => 'supplier',
+            ],
+            [
+                'name' => 'Omaruser',
+                'email' => 'omar@user.com',
+                'password' => Hash::make('123456'),
+                'role' => 'user',
             ],
         ]);
     }

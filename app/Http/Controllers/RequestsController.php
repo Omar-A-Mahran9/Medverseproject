@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Admin\Groupproduct;
 use App\Models\Admin\product;
 use App\Models\Product_Request;
+use App\Models\Qutation;
 use App\Models\Report;
 use App\Models\Requeest;
 use App\Models\User;
@@ -26,25 +27,32 @@ class RequestsController extends Controller
      */
     public function index($id)
     { 
+      
          $allrequest=array();
         if(Auth::user()->role=='ADMIN'){
             $allrequests=Requeest::with('Product_Request','getuser','getsupplier','getclient')->get();
+           
         }
         elseif(Auth::user()->role=='SUPPLIER')
         {
             $allrequests=Requeest::with('Product_Request','getuser','getsupplier','getclient')->where('supplier_id',$id)->get();
+           
         }
         else{
              
             $allrequests=Requeest::with('Product_Request','getuser','getsupplier','getclient')->where('user_id',$id)->get();
         }
         foreach($allrequests as $request ){
-           
+            $qutation=Qutation::where('requests_id',$request->id)->first();
+            if($qutation != null){
+                $request['qutation'] = $qutation;            }
             array_push($allrequest, $request);
          }
          return $allrequest;
     }
+
     public function filter($idd){
+
          $allrequest=array();
          if(Auth::user()->role=='ADMIN'){
             if(request('request')){
@@ -144,120 +152,123 @@ class RequestsController extends Controller
         return response()->json(['bestproduct'=> $bestproduct]);
 
      }
-     public function changeRole(Requeest $request){
-        $product=product::findOrFail($request->productid);
-        if(Auth::user()->role=='ADMIN'){
-        $reports=[
-            'user_id'=>Auth::user()->id,
-            'product_id'=>$product->id,
-            'mainQty'=>$product->Qty,
-        ];
-        }
- 
-        $productquantity=$product->Qty;
-        $requestqty=$request->quantity;
-        $userrequest=User::find($request->user_id);
-        if(Auth::user()->role=='ADMIN' && ($productquantity<$requestqty ||$productquantity==0)){
-            return response()->json(['erroor'=>'Sorry You do not have enough Quantity from this product']);
+public function changeRole(Requeest $request){
+        $requestData=$request;
+        $arrayOfRequest=$request->Product_Request->toArray();
+        foreach($arrayOfRequest as $perrequest){
+              $product=$perrequest['getproduct'];
+              if(Auth::user()->role=='ADMIN'){
+                $reports=[
+                    'user_id'=>Auth::user()->id,
+                    'product_id'=>$product['id'],
+                    'mainQty'=>$product['Qty'],
+                ];
+                }
+         $productquantity=$product['Qty'];
+         $requestqty=$perrequest['quantity'];
+         $userrequest=User::find($requestData->user_id);
+         if(Auth::user()->role=='ADMIN' && ($productquantity<$requestqty || $productquantity==0)){
+            return response()->json(['erroor'=>"Sorry You do not have enough Quantity from " .  $perrequest['getproduct']['productname'] . " in your inventory"]);
         }
         else{
-              if((Auth::user()->role=='ADMIN')){
-                $newquatity=$productquantity-$requestqty;
-             }
-             else{
-                $newquatity=$productquantity;
-            }
-        if(request('statue')=='ACCEPTED'){
-            $request->update([
-                'statue'=>request('statue'),
-             ]);
-             
-             $product->update([
-                'Qty'=>$newquatity
-            ]);
+         if((Auth::user()->role=='ADMIN')){
+             $newquatity=$productquantity-$requestqty;
+         }
+             if(request('statue')=='ACCEPTED'){   
+                $productModel=product::findOrFail($product['id']);         
+                $productModel->update([
+                    'Qty'=>$newquatity
+                ]);
+ 
+                $reports=Arr::add($reports, 'subQty', $productModel->Qty);
+                
+                $reports= Arr::add($reports, 'requestQty', $perrequest['quantity']);
 
-            $reports=Arr::add($reports, 'subQty', $product->Qty);
-            $reports= Arr::add($reports, 'requestQty', $request->quantity);
-
-            $report=Report::create($reports);
-       
-            if(Auth::user()->role=='ADMIN' && $request->client_id!=null){
-                $alluserinventory=UserInventory::where('user_id',$request->client_id)->where('product_id',$request->productid)->first();
-            }
-            else{
-               $alluserinventory=UserInventory::where('user_id',$request->user_id)->where('product_id',$request->productid)->first();
-           }
-                if($alluserinventory){
-                    $reports=[
-                        'user_id'=>$request->user_id,
-                        'product_id'=>$request->productid,
-                        'mainQty'=>$alluserinventory->Quantity];
-                    $alluserinventory->update([
-                        'Quantity'=>$alluserinventory->Quantity+$requestqty
-                    ]);
-
-                    $reports=Arr::add($reports, 'subQty', $alluserinventory->Quantity);
-                    $reports= Arr::add($reports, 'requestQty',$requestqty );
-
-                    $report=Report::create($reports);
-                  
+                $report=Report::create($reports);
+        
+                if(Auth::user()->role=='ADMIN' && $requestData->client_id!=null){
+                    $alluserinventory=UserInventory::where('user_id',$requestData->client_id)->where('product_id',$perrequest['productid'])->first();
                 }
                 else{
-                    if($request->client_id!=null){
-                        UserInventory::create([
-                            'user_id'=>$request->client_id,
-                            'product_id'=>$request->productid,
-                            'Quantity'=> $requestqty,
-                        ]);    
+                    $alluserinventory=UserInventory::where('user_id',$requestData->user_id)->where('product_id',$perrequest['productid'])->first();
+                }
+                if($alluserinventory){
+                  
                         $reports=[
-                            'user_id'=>$request->client_id,
-                            'product_id'=>$request->productid,
-                            'requestQty'=>$requestqty,
-                            'mainQty'=>$requestqty,
-                            'subQty'=>$requestqty,
-                        ];     
+                            'user_id'=>$requestData->user_id,
+                            'product_id'=>$perrequest['productid'],
+                            'mainQty'=>$alluserinventory->Quantity];
+                        $alluserinventory->update([
+                            'Quantity'=>$alluserinventory->Quantity+$requestqty
+                        ]);
+
+                        $reports=Arr::add($reports, 'subQty', $alluserinventory->Quantity);
+                        $reports= Arr::add($reports, 'requestQty',$requestqty );
+
                         $report=Report::create($reports);
- 
+                    
                     }
-                    else{
-                        UserInventory::create([
-                            'user_id'=>$request->user_id,
-                            'product_id'=>$request->productid,
-                            'Quantity'=> $requestqty,
-                        ]);  
-                        $reports=[
-                            'user_id'=>$request->user_id,
-                            'product_id'=>$request->productid,
-                            'requestQty'=>$requestqty,
-                            'mainQty'=>$requestqty,
-                            'subQty'=>$requestqty,
-                        ];     
-                        $report=Report::create($reports);
- 
-                    }
-                     
-                    }
+                else{
+                        if($requestData->client_id!=null){
+                            UserInventory::create([
+                                'user_id'=>$requestData->client_id,
+                                'product_id'=>$perrequest['productid'],
+                                'Quantity'=> $requestqty,
+                            ]);    
+                            $reports=[
+                                'user_id'=>$requestData->client_id,
+                                'product_id'=>$perrequest['productid'],
+                                'requestQty'=>$requestqty,
+                                'mainQty'=>$requestqty,
+                                'subQty'=>$requestqty,
+                            ];     
+                            $report=Report::create($reports);
+    
+                        }
+                        else{
+                            UserInventory::create([
+                                'user_id'=>$requestData->user_id,
+                                'product_id'=>$perrequest['productid'],
+                                'Quantity'=> $requestqty,
+                            ]);  
+                            $reports=[
+                                'user_id'=>$requestData->user_id,
+                                'product_id'=>$perrequest['productid'],
+                                'requestQty'=>$requestqty,
+                                'mainQty'=>$requestqty,
+                                'subQty'=>$requestqty,
+                            ];     
+                            $report=Report::create($reports);
+    
+                        }
+                        
+                }
+            
+            }
+                else{
+                    $request->update([
+                        'statue'=>request('statue'),
+                    ]);
                     return response()->json(['success'=>true]);
-         
-             }
-        else{
-            $request->update([
-                'statue'=>request('statue'),
-             ]);
-             return response()->json(['success'=>true]);
 
-        }
+                }
         }
 
-      }
+        }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
+        $request->update([
+            'statue'=>request('statue'),
+        ]);
+       
+        return response()->json(['success'=>true]);
+
     }
+
+    public function is_delivery(){
+
+    }
+
+ 
 
     /**
      * Store a newly created resource in storage.
@@ -322,7 +333,7 @@ class RequestsController extends Controller
             foreach ($request['request'] as $subdata) {
                 $subdata['request_id'] = $req->id;
                 $prod_req=Product_Request::create($subdata);     
-    }
+      }
 
             return response()->json(['message'=>'Request send successfully']);
  

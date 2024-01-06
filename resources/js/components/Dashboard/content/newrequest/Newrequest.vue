@@ -97,32 +97,59 @@
                         -
                     </div> -->
                 </div>
-                <div class="form-group">
-                    <label for="productid">Product Name</label>
+                <div class="form-row">
+                    <div class="form-group col-6">
+                        <label for="productid">Product Name</label>
 
-                    <div
-                        v-if="
-                            errors && errors[`request.${index - 1}.productid`]
-                        "
-                    >
-                        <p class="text text-danger">
-                            {{ errors[`request.${index - 1}.productid`][0] }} *
-                        </p>
-                    </div>
-                    <select
-                        name="productid"
-                        v-model="request[index - 1].productid"
-                        class="form-control"
-                    >
-                        <option hidden value="">choose product</option>
-                        <option
-                            v-for="product in Allproduct"
-                            :key="product.id"
-                            :value="product.id"
+                        <div
+                            v-if="
+                                errors &&
+                                errors[`request.${index - 1}.productid`]
+                            "
                         >
-                            {{ product.productname }}
-                        </option>
-                    </select>
+                            <p class="text text-danger">
+                                {{
+                                    errors[`request.${index - 1}.productid`][0]
+                                }}
+                                *
+                            </p>
+                        </div>
+                        <select
+                            name="productid"
+                            v-model="request[index - 1].productid"
+                            class="form-control"
+                        >
+                            <option hidden value="">choose product</option>
+                            <option
+                                v-for="product in Allproduct"
+                                :key="product.id"
+                                :value="product.id"
+                            >
+                                {{ product.productname }}
+                            </option>
+                        </select>
+                    </div>
+                    <div class="form-group col-6">
+                        <label for="clientname">Quantity</label>
+                        <div
+                            v-if="
+                                errors &&
+                                errors[`request.${index - 1}.quantity`]
+                            "
+                        >
+                            <p class="text text-danger">
+                                {{ errors[`request.${index - 1}.quantity`][0] }}
+                                *
+                            </p>
+                        </div>
+
+                        <input
+                            type="number"
+                            class="form-control"
+                            v-model="request[index - 1].quantity"
+                            placeholder="enter product quantity"
+                        />
+                    </div>
                 </div>
                 <div class="form-group">
                     <label for="productdescription">Product Description</label>
@@ -151,30 +178,7 @@
                         placeholder="Enter product description"
                     ></textarea>
                 </div>
-                <div class="form-row">
-                    <div class="col-8"></div>
-                    <div class="form-group col-4">
-                        <label for="clientname">Quantity</label>
-                        <div
-                            v-if="
-                                errors &&
-                                errors[`request.${index - 1}.quantity`]
-                            "
-                        >
-                            <p class="text text-danger">
-                                {{ errors[`request.${index - 1}.quantity`][0] }}
-                                *
-                            </p>
-                        </div>
 
-                        <input
-                            type="number"
-                            class="form-control"
-                            v-model="request[index - 1].quantity"
-                            placeholder="enter product quantity"
-                        />
-                    </div>
-                </div>
                 <!-- <div class="form-group">
                     <label for="exampleInputFile">Image</label>
 
@@ -308,8 +312,6 @@ const numofproduct = ref(1);
 const newObj = {
     productid: "",
     productdescription: "",
-    clientname: "",
-    suppliername: "",
     quantity: "",
 };
 const addproduct = () => {
@@ -343,11 +345,11 @@ const submitform = () => {
                 {
                     productid: "",
                     productdescription: "",
-                    clientname: "",
-                    suppliername: "",
                     quantity: "",
                 },
             ]; // Clear the request array
+            sendrequest.value.clientname = null;
+            sendrequest.value.suppliername = "";
 
             if (errors.value != null) {
                 errors.value = null;

@@ -55,6 +55,8 @@
                                                         Supplier num
                                                     </th>
                                                     <th>Date</th>
+                                                    <th>Quotation Statue</th>
+                                                    <th>Is Delivered</th>
                                                     <th>action</th>
                                                 </tr>
                                             </thead>
@@ -176,6 +178,50 @@
                                                         }}
                                                     </td>
                                                     <td>
+                                                        <div
+                                                            v-if="
+                                                                request.qutation
+                                                            "
+                                                        >
+                                                            <p
+                                                                @click="
+                                                                    toggleShowComment
+                                                                "
+                                                                style="
+                                                                    cursor: pointer;
+                                                                "
+                                                            >
+                                                                {{
+                                                                    request
+                                                                        .qutation
+                                                                        .statue
+                                                                }}
+                                                            </p>
+
+                                                            <p
+                                                                v-if="
+                                                                    show_comment
+                                                                "
+                                                            >
+                                                                {{
+                                                                    request
+                                                                        .qutation
+                                                                        .refuse_comment
+                                                                }}
+                                                            </p>
+                                                        </div>
+                                                        <div v-else>
+                                                            Not have Quotation
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <input
+                                                            type="checkbox"
+                                                            class=""
+                                                            id="customSwitch3"
+                                                        />
+                                                    </td>
+                                                    <td>
                                                         <div>
                                                             <a
                                                                 v-if="
@@ -242,6 +288,7 @@
                                                             </p>
                                                         </div>
                                                     </td>
+
                                                     <div
                                                         id="showQuotation"
                                                         class="modal fade"
@@ -478,50 +525,39 @@
                             <div>
                                 <p style="font-weight: bold">
                                     Request by :
-                                    <span
-                                        style="font-weight: normal"
-                                        v-if="request.clientname"
-                                        >{{ request.clientname.name }}</span
-                                    >
+                                    <span style="font-weight: normal">{{
+                                        request.getuser.name
+                                    }}</span>
                                 </p>
                             </div>
                             <div>
                                 <p style="font-weight: bold">
-                                    {{ request.clientname.name }} position :
-                                    <span
-                                        style="font-weight: normal"
-                                        v-if="request.clientname"
-                                        >{{ request.clientname.position }}</span
-                                    >
+                                    {{ request.getuser.name }} position :
+                                    <span style="font-weight: normal">{{
+                                        request.getuser.position
+                                    }}</span>
                                 </p>
                             </div>
                             <div>
                                 <p style="font-weight: bold">
-                                    {{ request.clientname.name }} phone:
-                                    <span
-                                        style="font-weight: normal"
-                                        v-if="request.clientname"
-                                        >{{ request.clientname.phone }}</span
-                                    >
+                                    {{ request.getuser.name }} phone:
+                                    <span style="font-weight: normal">{{
+                                        request.getuser.phone
+                                    }}</span>
                                 </p>
                             </div>
                             <div>
                                 <p style="font-weight: bold">
-                                    {{ request.clientname.name }} email:
-                                    <span
-                                        style="font-weight: normal"
-                                        v-if="request.clientname"
-                                        >{{ request.clientname.email }}</span
-                                    >
+                                    {{ request.getuser.name }} email:
+                                    <span style="font-weight: normal">{{
+                                        request.getuser.email
+                                    }}</span>
                                 </p>
                             </div>
                             <div>
                                 <p style="font-weight: bold">
                                     Request Date:
-                                    <span
-                                        style="font-weight: normal"
-                                        v-if="request.clientname"
-                                    >
+                                    <span style="font-weight: normal">
                                         {{
                                             moment(request.created_at).format(
                                                 "YYYY-MM-DD HH:mm:ss a"
@@ -535,104 +571,84 @@
                             <div
                                 v-if="
                                     currentuseradmin &&
-                                    request.clientname.role != 'ADMIN'
+                                    request.clientname == null
                                 "
                             >
                                 <h5 class="text-info">Send To:</h5>
-                                <div v-for="user in users">
+
+                                <div>
                                     <div>
-                                        <div>
-                                            <p style="font-weight: bold">
-                                                Clientname:
-                                                <span
-                                                    style="font-weight: normal"
-                                                >
-                                                    <span>
-                                                        {{
-                                                            request.clientname
-                                                                .name
-                                                        }}
-                                                    </span>
+                                        <p style="font-weight: bold">
+                                            Clientname:
+                                            <span style="font-weight: normal">
+                                                <span>
+                                                    {{ request.getuser.name }}
                                                 </span>
-                                            </p>
-                                        </div>
-                                        <div>
-                                            <p style="font-weight: bold">
-                                                Client phone:
-                                                <span
-                                                    style="font-weight: normal"
-                                                >
-                                                    <span>
-                                                        {{
-                                                            request.clientname
-                                                                .phone
-                                                        }}
-                                                    </span>
+                                            </span>
+                                        </p>
+                                    </div>
+                                    <div>
+                                        <p style="font-weight: bold">
+                                            Client phone:
+                                            <span style="font-weight: normal">
+                                                <span>
+                                                    {{ request.getuser.phone }}
                                                 </span>
-                                            </p>
-                                        </div>
-                                        <div>
-                                            <p style="font-weight: bold">
-                                                Client Email:
-                                                <span
-                                                    style="font-weight: normal"
-                                                >
-                                                    <span>
-                                                        {{
-                                                            request.clientname
-                                                                .email
-                                                        }}
-                                                    </span>
+                                            </span>
+                                        </p>
+                                    </div>
+                                    <div>
+                                        <p style="font-weight: bold">
+                                            Client Email:
+                                            <span style="font-weight: normal">
+                                                <span>
+                                                    {{ request.getuser.email }}
                                                 </span>
-                                            </p>
-                                        </div>
-                                        <div>
-                                            <p style="font-weight: bold">
-                                                Client Address:
-                                                <span
-                                                    style="font-weight: normal"
-                                                >
-                                                    <span>
-                                                        {{
-                                                            request.clientname
-                                                                .Address
-                                                        }}
-                                                    </span>
+                                            </span>
+                                        </p>
+                                    </div>
+                                    <div>
+                                        <p style="font-weight: bold">
+                                            Client Address:
+                                            <span style="font-weight: normal">
+                                                <span>
+                                                    {{
+                                                        request.getuser.Address
+                                                    }}
                                                 </span>
-                                            </p>
-                                        </div>
-                                        <div>
-                                            <p style="font-weight: bold">
-                                                Client City:
-                                                <span
-                                                    style="font-weight: normal"
-                                                >
-                                                    <span>
-                                                        {{
-                                                            request.clientname
-                                                                .city
-                                                        }}
-                                                    </span>
+                                            </span>
+                                        </p>
+                                    </div>
+                                    <div>
+                                        <p style="font-weight: bold">
+                                            Client City:
+                                            <span style="font-weight: normal">
+                                                <span>
+                                                    {{ request.getuser.city }}
                                                 </span>
-                                            </p>
-                                        </div>
+                                            </span>
+                                        </p>
                                     </div>
                                 </div>
                             </div>
-                            <div v-if="!currentuseradmin" class="text-center">
-                                <p>
+                            <div
+                                v-if="!currentuseradmin"
+                                class="d-flex flex-column justify-content-center"
+                            >
+                                <p v-if="havequtation == false">
                                     you will receive quotation from admin to
                                     submit your Request then your request will
                                     be applied during 3 working days
                                 </p>
+
                                 <button
                                     v-if="
                                         havequtation &&
-                                        (currentuseradmin || currentuser)
+                                        (!currentuseradmin || currentuser)
                                     "
                                     @click="showQuotation(request)"
                                     type="submit"
-                                    class="btn btn-danger"
+                                    class="btn btn-primary"
                                 >
                                     view Quotation
                                 </button>
@@ -648,13 +664,16 @@
                             <div
                                 v-if="
                                     currentuseradmin &&
-                                    request.clientname.role == 'ADMIN'
+                                    request.clientname != null
                                 "
                                 class="text-center"
                             >
                                 <p>
                                     Once You accept Request directly products
-                                    will be send to all clients
+                                    will be send to
+                                    <strong>{{
+                                        request.clientname.name
+                                    }}</strong>
                                 </p>
                             </div>
                         </div>
@@ -698,7 +717,11 @@
                     </div>
                     <div class="modal-footer">
                         <button
-                            v-if="currentuseradmin && !havequtation"
+                            v-if="
+                                currentuseradmin &&
+                                request.getuser.role != 'ADMIN' &&
+                                !havequtation
+                            "
                             @click="showquotationmodal(request)"
                             type="submit"
                             class="btn btn-info"
@@ -766,6 +789,7 @@
                                     width="150"
                                 />
                             </div>
+
                             <div class="col-6 text-right pr-3">
                                 <h3><strong>Quotation</strong></h3>
                             </div>
@@ -992,12 +1016,23 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <div v-if="!currentuseradmin">
+                        <div
+                            v-if="
+                                !currentuseradmin &&
+                                quotationsearch &&
+                                quotationsearch.qutation.statue == 'PENDING'
+                            "
+                        >
                             <button
                                 type="button"
                                 class="btn btn-success mr-2"
                                 data-dismiss="modal"
-                                @click.prevent="changequotationstatue(true)"
+                                @click.prevent="
+                                    changequotationstatue({
+                                        quotationsearch: quotationsearch,
+                                        statue: 'ACCEPTED', // or false, depending on your requirements
+                                    })
+                                "
                             >
                                 Accept
                             </button>
@@ -1005,11 +1040,25 @@
                                 type="button"
                                 class="btn btn-danger"
                                 data-dismiss="modal"
-                                @click.prevent="changequotationstatue(false)"
+                                @click.prevent="
+                                    changequotationstatue({
+                                        quotationsearch: quotationsearch,
+                                        statue: 'REJECTED', // or false, depending on your requirements
+                                    })
+                                "
                             >
-                                Reject
+                                Rejected
                             </button>
                         </div>
+                        <p
+                            v-if="
+                                quotationsearch &&
+                                quotationsearch.qutation.statue != 'PENDING'
+                            "
+                            class="text-success"
+                        >
+                            {{ quotationsearch.qutation.statue }}
+                        </p>
                         <button
                             type="button"
                             class="btn btn-secondary"
@@ -1182,38 +1231,6 @@
                                         />
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <label for="exampleInputFile">Image</label>
-
-                                    <div class="input-group">
-                                        <div class="custom-file">
-                                            <input
-                                                type="file"
-                                                class="custom-file-input"
-                                                id="exampleInputFile"
-                                                name="image"
-                                                @change="handleimage"
-                                            />
-                                            <label
-                                                v-if="request.image.name"
-                                                class="custom-file-label"
-                                                for="exampleInputFile"
-                                                >{{ request.image.name }}</label
-                                            >
-                                            <label
-                                                v-if="!request.image.name"
-                                                class="custom-file-label"
-                                                for="exampleInputFile"
-                                                >Choose file
-                                            </label>
-                                        </div>
-                                        <div class="input-group-append">
-                                            <span class="input-group-text"
-                                                >Upload</span
-                                            >
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                             <!-- /.card-body -->
                         </div>
@@ -1250,6 +1267,72 @@
                 </div>
             </div>
         </div>
+
+        <div
+            id="Refusecomment"
+            class="modal fade"
+            tabindex="-1"
+            role="dialog"
+            aria-labelledby="myLargeModalLabel"
+            aria-hidden="true"
+        >
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5
+                            class="modal-title"
+                            id="exampleModalLabel"
+                            style="font-weight: bold"
+                        >
+                            Refuse Comment
+                        </h5>
+
+                        <button
+                            type="button"
+                            class="close"
+                            data-dismiss="modal"
+                            aria-label="Close"
+                        >
+                            <span aria-hidden="true" class="text-danger"
+                                >&times;</span
+                            >
+                        </button>
+                    </div>
+
+                    <div class="modal-body">
+                        <label for="">Please write here refuse comment </label>
+                        <textarea
+                            v-model="Refuse_Comment.comment"
+                            style="background-color: #f2f2f2"
+                            class="form-control"
+                            rows="5"
+                            id="comment"
+                        ></textarea>
+                        <span v-if="errors && errors.comment">
+                            <p class="text text-danger">
+                                {{ errors.comment[0] }} *
+                            </p>
+                        </span>
+                    </div>
+                    <div class="modal-footer">
+                        <button
+                            @click.prevent="confirmrefuse"
+                            type="submit"
+                            class="btn btn-danger"
+                        >
+                            Delete Request
+                        </button>
+                        <button
+                            type="button"
+                            class="btn btn-secondary"
+                            data-dismiss="modal"
+                        >
+                            Close
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 <style scoped>
@@ -1282,11 +1365,10 @@ const request = ref({
     Request_prouducts: [],
     productdescription: "",
     clientname: "",
+    getuser: "",
     suppliername: "",
-    image: "",
     quantity: "",
     currentuser: currentuser.id,
-    productname: "",
     client_id: "",
     created_at: "",
 });
@@ -1333,6 +1415,7 @@ const getallrequest = () => {
                 return 0;
             }
         });
+        console.log(allrequest.value);
         reload.value = false;
     });
 };
@@ -1386,10 +1469,43 @@ const getusers = () => {
         // users.value = response.data;
     });
 };
-const changequotationstatue = (statue) => {
-    axios.put(`/quotation/${statue}`).then((res) => {
-        toaster.success("statue changed successfully!");
-    });
+const Refuse_Comment = ref({ qutation: "", statue: "", comment: "" });
+
+const changequotationstatue = ({ quotationsearch, statue }) => {
+    if (statue == "REJECTED") {
+        $("#Refusecomment").modal("show");
+        Refuse_Comment.value.qutation = quotationsearch;
+        Refuse_Comment.value.statue = statue;
+    } else {
+        axios
+            .put(`/quotation/${quotationsearch.qutation.id}`, {
+                statue: statue,
+            })
+            .then((res) => {
+                toaster.success("statue changed successfully!");
+                window.location.reload();
+            });
+    }
+};
+const show_comment = ref(false);
+
+const toggleShowComment = () => {
+    show_comment.value = !show_comment.value;
+};
+const confirmrefuse = () => {
+    axios
+        .put(
+            `/quotation/${Refuse_Comment.value.qutation.qutation.id}`,
+            Refuse_Comment.value
+        )
+        .then((res) => {
+            toaster.success("statue changed successfully!");
+            window.location.reload();
+        })
+        .catch((error) => {
+            errors.value = error.response.data.errors;
+            loading.value = false;
+        });
 };
 const deleterequest = (request) => {
     requestidbeingDelete.value = request.id;
@@ -1415,26 +1531,23 @@ const confirmdelete = () => {
                 (request) => request.id !== requestidbeingDelete.value
             );
 
-            $("#deleteModal").modal("hide");
+            $("#Refusecomment").modal("hide");
             toaster.success("User deleted successfully!");
         });
 };
 const havequtation = ref(false);
 
 const showdetailsmodal = (requestt) => {
+    console.log(requestt);
     havequtation.value = false;
 
     request.value.requestid = requestt.id;
 
     request.value.Request_prouducts = requestt.product__request;
 
-    if (requestt.getuser != null) {
-        request.value.clientname = requestt.getuser;
-    } else {
-        request.value.clientname = null;
-    }
-
     request.value.created_at = requestt.created_at;
+    request.value.clientname = requestt.getclient;
+    request.value.getuser = requestt.getuser;
 
     axios.get(`/getqutation/${requestt.id}`).then((response) => {
         if (response.data) {
