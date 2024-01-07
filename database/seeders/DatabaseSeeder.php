@@ -150,24 +150,27 @@ class DatabaseSeeder extends Seeder
                 'One to one Consultation (one session)'=>true,
             ],
         ]);
-        DB::table('users')->insert([
+        DB::table('products')->insert([
             [
-                'name' => 'superAdmin',
-                'email' => 'admin@admin.com',
-                'password' => Hash::make('123456'),
-                'role' => 'admin',
+                'productname' => 'prod1',
+                'productcode' => '343332323232',
+                'Qty' => 1000,
+                'group'=>"gffgfg",
+                'price' => '200',
             ],
             [
-                'name' => 'Omarsupplier',
-                'email' => 'omar@supplier.com',
-                'password' => Hash::make('123456'),
-                'role' => 'supplier',
+                'productname' => 'prod2',
+                'productcode' => '335332323232',
+                'Qty' => 1000,
+                'group'=>"gffgfg",
+                'price' => '200',
             ],
             [
-                'name' => 'Omaruser',
-                'email' => 'omar@user.com',
-                'password' => Hash::make('123456'),
-                'role' => 'user',
+                'productname' => 'prod3',
+                'productcode' => '333632323232',
+                'Qty' => 1000,
+                'group'=>"gffgfg",
+                'price' => '200',
             ],
         ]);
     }

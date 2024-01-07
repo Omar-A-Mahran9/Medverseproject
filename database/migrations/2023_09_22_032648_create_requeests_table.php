@@ -17,6 +17,8 @@ return new class extends Migration
             $table->foreignId('user_id')->nullable()->constrained()->references('id')->on('users');
             $table->foreignId('supplier_id')->nullable()->constrained()->references('id')->on('users')->default(null);
             $table->foreignId('client_id')->nullable()->constrained()->references('id')->on('users')->default(null);
+            $table->boolean('is_Delivered')->default(false);
+
             $table->timestamps();
         });
     }

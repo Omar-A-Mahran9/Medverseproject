@@ -214,11 +214,23 @@
                                                             Not have Quotation
                                                         </div>
                                                     </td>
+                                                    {{
+                                                        request.is_Delivered
+                                                    }}
                                                     <td>
                                                         <input
                                                             type="checkbox"
-                                                            class=""
+                                                            v-model="
+                                                                request.is_Delivered
+                                                            "
                                                             id="customSwitch3"
+                                                            :checked="
+                                                                request.is_Delivered ??
+                                                                0
+                                                            "
+                                                            :disabled="
+                                                                (request.is_Delivered = 1)
+                                                            "
                                                         />
                                                     </td>
                                                     <td>
@@ -1370,6 +1382,7 @@ const request = ref({
     quantity: "",
     currentuser: currentuser.id,
     client_id: "",
+    is_Delivered: "",
     created_at: "",
 });
 

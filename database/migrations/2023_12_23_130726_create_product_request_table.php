@@ -16,7 +16,6 @@ return new class extends Migration
             $table->foreignId('productid')->nullable()->constrained()->references('id')->on('products');
             $table->foreignId('request_id')->constrained()->references('id')->on('requeests')->onDelete("cascade");
             $table->string('productdescription');
-            $table->boolean('is_Delivered')->default(false);
 
             $table->integer('quantity');
            
