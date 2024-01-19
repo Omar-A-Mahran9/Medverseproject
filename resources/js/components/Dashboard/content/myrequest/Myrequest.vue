@@ -224,13 +224,6 @@
                                                                 request.is_Delivered
                                                             "
                                                             id="customSwitch3"
-                                                            :checked="
-                                                                request.is_Delivered ??
-                                                                0
-                                                            "
-                                                            :disabled="
-                                                                (request.is_Delivered = 1)
-                                                            "
                                                         />
                                                     </td>
                                                     <td>
