@@ -14,6 +14,7 @@ class Requeest extends Model
             'supplier_id',
             'client_id',
             'statue',
+            'is_Delivered',
             ];
 
             function Product_Request(){

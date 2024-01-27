@@ -214,17 +214,51 @@
                                                             Not have Quotation
                                                         </div>
                                                     </td>
-                                                    {{
-                                                        request.is_Delivered
-                                                    }}
+
                                                     <td>
                                                         <input
                                                             type="checkbox"
                                                             v-model="
                                                                 request.is_Delivered
                                                             "
+                                                            v-if="
+                                                                request.is_Delivered ==
+                                                                    0 &&
+                                                                request.statue ==
+                                                                    'ACCEPTED' &&
+                                                                !currentuseradmin &&
+                                                                currentuser.role !=
+                                                                    'SUPPLIER'
+                                                            "
+                                                            @change="
+                                                                is_delivery(
+                                                                    request,
+                                                                    $event
+                                                                        .target
+                                                                        .value
+                                                                )
+                                                            "
                                                             id="customSwitch3"
                                                         />
+                                                        <p
+                                                            v-if="
+                                                                currentuseradmin ||
+                                                                (currentuser.role ==
+                                                                    'SUPPLIER' &&
+                                                                    request.is_Delivered ==
+                                                                        0)
+                                                            "
+                                                        >
+                                                            Not Delivered
+                                                        </p>
+                                                        <p
+                                                            v-if="
+                                                                request.is_Delivered ==
+                                                                1
+                                                            "
+                                                        >
+                                                            Delivered
+                                                        </p>
                                                     </td>
                                                     <td>
                                                         <div>
@@ -575,8 +609,8 @@
                         <div class="col-6 d-flex align-items-center">
                             <div
                                 v-if="
-                                    currentuseradmin &&
-                                    request.clientname == null
+                                    currentuseradmin
+                                    // request.clientname == null
                                 "
                             >
                                 <h5 class="text-info">Send To:</h5>
@@ -586,8 +620,23 @@
                                         <p style="font-weight: bold">
                                             Clientname:
                                             <span style="font-weight: normal">
-                                                <span>
+                                                <span
+                                                    v-if="
+                                                        request.clientname ==
+                                                        null
+                                                    "
+                                                >
                                                     {{ request.getuser.name }}
+                                                </span>
+                                                <span
+                                                    v-if="
+                                                        request.clientname !=
+                                                        null
+                                                    "
+                                                >
+                                                    {{
+                                                        request.clientname.name
+                                                    }}
                                                 </span>
                                             </span>
                                         </p>
@@ -596,8 +645,23 @@
                                         <p style="font-weight: bold">
                                             Client phone:
                                             <span style="font-weight: normal">
-                                                <span>
+                                                <span
+                                                    v-if="
+                                                        request.clientname ==
+                                                        null
+                                                    "
+                                                >
                                                     {{ request.getuser.phone }}
+                                                </span>
+                                                <span
+                                                    v-if="
+                                                        request.clientname !=
+                                                        null
+                                                    "
+                                                >
+                                                    {{
+                                                        request.clientname.phone
+                                                    }}
                                                 </span>
                                             </span>
                                         </p>
@@ -606,8 +670,23 @@
                                         <p style="font-weight: bold">
                                             Client Email:
                                             <span style="font-weight: normal">
-                                                <span>
+                                                <span
+                                                    v-if="
+                                                        request.clientname ==
+                                                        null
+                                                    "
+                                                >
                                                     {{ request.getuser.email }}
+                                                </span>
+                                                <span
+                                                    v-if="
+                                                        request.clientname !=
+                                                        null
+                                                    "
+                                                >
+                                                    {{
+                                                        request.clientname.email
+                                                    }}
                                                 </span>
                                             </span>
                                         </p>
@@ -616,9 +695,25 @@
                                         <p style="font-weight: bold">
                                             Client Address:
                                             <span style="font-weight: normal">
-                                                <span>
+                                                <span
+                                                    v-if="
+                                                        request.clientname ==
+                                                        null
+                                                    "
+                                                >
                                                     {{
                                                         request.getuser.Address
+                                                    }}
+                                                </span>
+                                                <span
+                                                    v-if="
+                                                        request.clientname !=
+                                                        null
+                                                    "
+                                                >
+                                                    {{
+                                                        request.clientname
+                                                            .Address
                                                     }}
                                                 </span>
                                             </span>
@@ -628,8 +723,23 @@
                                         <p style="font-weight: bold">
                                             Client City:
                                             <span style="font-weight: normal">
-                                                <span>
+                                                <span
+                                                    v-if="
+                                                        request.clientname ==
+                                                        null
+                                                    "
+                                                >
                                                     {{ request.getuser.city }}
+                                                </span>
+                                                <span
+                                                    v-if="
+                                                        request.clientname !=
+                                                        null
+                                                    "
+                                                >
+                                                    {{
+                                                        request.clientname.city
+                                                    }}
                                                 </span>
                                             </span>
                                         </p>
@@ -666,7 +776,7 @@
                                     view Quotation
                                 </button>
                             </div>
-                            <div
+                            <!-- <div
                                 v-if="
                                     currentuseradmin &&
                                     request.clientname != null
@@ -680,7 +790,7 @@
                                         request.clientname.name
                                     }}</strong>
                                 </p>
-                            </div>
+                            </div> -->
                         </div>
                         <div class="col-12" v-if="currentuser">
                             <h5 class="text-info text-bold text-center">
@@ -722,11 +832,7 @@
                     </div>
                     <div class="modal-footer">
                         <button
-                            v-if="
-                                currentuseradmin &&
-                                request.getuser.role != 'ADMIN' &&
-                                !havequtation
-                            "
+                            v-if="currentuseradmin && !havequtation"
                             @click="showquotationmodal(request)"
                             type="submit"
                             class="btn btn-info"
@@ -821,7 +927,7 @@
                                     }}
                                 </p>
                             </div>
-                            <div>
+                            <div v-if="request.clientname == null">
                                 <p style="margin: 0; padding: 0">
                                     <strong>Quotation to : </strong>
                                     {{
@@ -841,6 +947,29 @@
                                     {{
                                         quotationsearch.qutation.getrequest
                                             .getuser.Address
+                                    }}
+                                </p>
+                            </div>
+                            <div v-if="request.clientname != null">
+                                <p style="margin: 0; padding: 0">
+                                    <strong>Quotation to : </strong>
+                                    {{
+                                        quotationsearch.qutation.getrequest
+                                            .getclient.name
+                                    }}
+                                </p>
+                                <p style="margin: 0; padding: 0">
+                                    <strong>Phone : </strong>
+                                    {{
+                                        quotationsearch.qutation.getrequest
+                                            .getclient.phone
+                                    }}
+                                </p>
+                                <p style="margin: 0; padding: 0">
+                                    <strong>Address : </strong>
+                                    {{
+                                        quotationsearch.qutation.getrequest
+                                            .getclient.Address
                                     }}
                                 </p>
                             </div>
@@ -1325,7 +1454,7 @@
                             type="submit"
                             class="btn btn-danger"
                         >
-                            Delete Request
+                            Send
                         </button>
                         <button
                             type="button"
@@ -1442,6 +1571,20 @@ const changestatue = (request, statue) => {
             });
     }
 };
+const is_delivery = (request, statue) => {
+    let orderdeliverd = request.is_Delivered;
+    axios
+        .patch(`/api/request/${request.id}/is_delivered`, {
+            statue: orderdeliverd,
+        })
+        .then((response) => {
+            if (response.data.erroor) {
+                toaster.error(response.data.erroor);
+            } else {
+                toaster.success("statue Changed Successfuly");
+            }
+        });
+};
 const showquotationmodal = () => {
     Quotation.value.request = request;
     $("#detailsmodal").modal("toggle");
@@ -1488,8 +1631,12 @@ const changequotationstatue = ({ quotationsearch, statue }) => {
                 statue: statue,
             })
             .then((res) => {
+                $("#showQutaion").modal("hide");
+
                 toaster.success("statue changed successfully!");
-                window.location.reload();
+                setTimeout(function () {
+                    window.location.reload();
+                }, 1000);
             });
     }
 };
@@ -1505,8 +1652,9 @@ const confirmrefuse = () => {
             Refuse_Comment.value
         )
         .then((res) => {
+            $("#Refusecomment").modal("hide");
+
             toaster.success("statue changed successfully!");
-            window.location.reload();
         })
         .catch((error) => {
             errors.value = error.response.data.errors;
@@ -1537,8 +1685,8 @@ const confirmdelete = () => {
                 (request) => request.id !== requestidbeingDelete.value
             );
 
-            $("#Refusecomment").modal("hide");
-            toaster.success("User deleted successfully!");
+            $("#deleteModal").modal("hide");
+            toaster.success("Request deleted successfully!");
         });
 };
 const havequtation = ref(false);

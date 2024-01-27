@@ -38,6 +38,7 @@
                     <div
                         style="height: 355px !important"
                         class="cardimage col-4 mb-5"
+                        :style="{ 'background-image': `url(${service.image})` }"
                     >
                         <div class="card-body">
                             <div style="margin: 40px">
@@ -89,16 +90,19 @@ export default {
                     title: "Inventory System",
                     description: "service brief",
                     router: "inventory",
+                    image: "@/assets/image/InventoryImage.jpg",
                 },
                 {
                     title: "Consultant services",
                     description: "service brief",
                     router: "consultant",
+                    image: "@/assets/image/InventoryImage.jpg",
                 },
                 {
                     title: "Academic services",
                     description: "service brief",
                     router: "academic",
+                    image: "@/assets/image/InventoryImage.jpg",
                 },
             ],
         };

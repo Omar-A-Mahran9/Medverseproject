@@ -104,6 +104,8 @@ Route::group(['middleware'=>['auth']], function () {
     Route::get('/api/currentuser',[Usercontroller::class,'currentuser']);
     Route::get('/api/clinics/{id}',[ClinicController::class,'index']);
     Route::patch('/api/request/{request}/change-statue',[RequestsController::class,'changeRole']);
+    Route::patch('/api/request/{request}/is_delivered',[RequestsController::class,'is_delivery']);
+
     Route::post('/newrequestcreate',[RequestsController::class,'store']);
     Route::put('/request/{id}',[RequestsController::class,'update']);
     Route::get('/requests/{id}',[RequestsController::class,'index']);

@@ -1,5 +1,14 @@
 <template>
     <div class="back mb-5">
+        <div class="video-background">
+            <video autoplay muted loop>
+                <source
+                    src="../../../assets/image/Med-Verse.mp4"
+                    type="video/mp4"
+                />
+                Your browser does not support the video tag.
+            </video>
+        </div>
         <headercomp />
         <sectionone />
     </div>
@@ -35,9 +44,32 @@ export default {
 </script>
 <style scoped>
 .back {
-    background-image: url("../../../assets/image/image6.jpg");
-    background-attachment: fixed;
-    background-size: cover;
-    background-repeat: no-repeat;
+    position: relative;
 }
+
+.video-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.video-background video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.video-background::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    opacity: 0.2; /* Adjust the opacity as needed */
+}
+
 </style>

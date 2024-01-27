@@ -40,7 +40,7 @@ class RequestsController extends Controller
         }
         else{
              
-            $allrequests=Requeest::with('Product_Request','getuser','getsupplier','getclient')->where('user_id',$id)->get();
+            $allrequests=Requeest::with('Product_Request','getuser','getsupplier','getclient')->where('user_id',$id)->orWhere('client_id',$id)->get();
         }
         foreach($allrequests as $request ){
             $qutation=Qutation::where('requests_id',$request->id)->first();
@@ -153,11 +153,21 @@ class RequestsController extends Controller
 
      }
 public function changeRole(Requeest $request){
-        $requestData=$request;
+ 
+        $request->update([
+            'statue'=>request('statue'),
+        ]);
+       
+        return response()->json(['success'=>true]);
+
+    }
+
+    public function is_delivery(Requeest $request){
+         $requestData=$request;
         $arrayOfRequest=$request->Product_Request->toArray();
         foreach($arrayOfRequest as $perrequest){
               $product=$perrequest['getproduct'];
-              if(Auth::user()->role=='ADMIN'){
+              if(Auth::user()->role=='USER'){
                 $reports=[
                     'user_id'=>Auth::user()->id,
                     'product_id'=>$product['id'],
@@ -167,16 +177,16 @@ public function changeRole(Requeest $request){
          $productquantity=$product['Qty'];
          $requestqty=$perrequest['quantity'];
          $userrequest=User::find($requestData->user_id);
-         if(Auth::user()->role=='ADMIN' && ($productquantity<$requestqty || $productquantity==0)){
+         if(Auth::user()->role=='USER' && ($productquantity<$requestqty || $productquantity==0)){
             return response()->json(['erroor'=>"Sorry You do not have enough Quantity from " .  $perrequest['getproduct']['productname'] . " in your inventory"]);
         }
-        else{
-         if((Auth::user()->role=='ADMIN')){
-             $newquatity=$productquantity-$requestqty;
-         }
-             if(request('statue')=='ACCEPTED'){   
-                $productModel=product::findOrFail($product['id']);         
-                $productModel->update([
+            else{
+            if((Auth::user()->role=='USER')){
+                $newquatity=$productquantity-$requestqty;
+            }
+                if(request('statue')=='true'){   
+                $productModel=product::findOrFail($product['id']);     
+                 $productModel->update([
                     'Qty'=>$newquatity
                 ]);
  
@@ -186,7 +196,7 @@ public function changeRole(Requeest $request){
 
                 $report=Report::create($reports);
         
-                if(Auth::user()->role=='ADMIN' && $requestData->client_id!=null){
+                if(Auth::user()->role=='USER' && $requestData->client_id!=null){
                     $alluserinventory=UserInventory::where('user_id',$requestData->client_id)->where('product_id',$perrequest['productid'])->first();
                 }
                 else{
@@ -239,7 +249,6 @@ public function changeRole(Requeest $request){
                                 'subQty'=>$requestqty,
                             ];     
                             $report=Report::create($reports);
-    
                         }
                         
                 }
@@ -247,25 +256,21 @@ public function changeRole(Requeest $request){
             }
                 else{
                     $request->update([
-                        'statue'=>request('statue'),
+                        'is_Delivered'=>request('statue'),
                     ]);
+                   
                     return response()->json(['success'=>true]);
 
                 }
         }
 
         }
-
+        
         $request->update([
-            'statue'=>request('statue'),
+            'is_Delivered'=>request('statue'),
         ]);
        
         return response()->json(['success'=>true]);
-
-    }
-
-    public function is_delivery(){
-
     }
 
  

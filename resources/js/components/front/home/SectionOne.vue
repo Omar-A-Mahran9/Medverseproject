@@ -1,9 +1,9 @@
 <template>
     <section class="pb-5">
         <div class="row align-items-start">
-            <div class="col-xs-12 col-sm-6 col-md-6">
+            <div class="col-xs-12 col-sm-6 col-md-6" >
                 <div class="mb-4">
-                    <p class="text-capitalize seccolor title">
+                    <p class="text-capitalize seccolor title" style="color:white !important">
                         Med-Verse offers a
                         <span
                             style="
@@ -17,7 +17,7 @@
                     </p>
                 </div>
                 <div>
-                    <p class="parager" style="font-weight: lighter">
+                    <p class="parager" style="font-weight: bold;">
                         We know that keeping your hospital/ clinic running
                         smoothly is a full time job. That's why we have created
                         med-verse, an all in one inventory and point of sale

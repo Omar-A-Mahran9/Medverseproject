@@ -2,7 +2,10 @@
     <nav class="navbar navbar-expand-lg pt-5" style="z-index: 9999">
         <div class="container-fluid">
             <a class="navbar-brand" href="/"
-                ><img src="@/assets/image/Logo.svg" width="200"
+                ><img
+                    src="@/assets/image/Logo.svg"
+                    width="200"
+                    class="white-fill"
             /></a>
             <button
                 class="navbar-toggler"
@@ -69,6 +72,10 @@
 </template>
 <script></script>
 <style scoped>
+.white-fill {
+    filter: brightness(0) invert(1) saturate(100%) brightness(100%)
+        grayscale(0%);
+}
 .res {
     border-radius: 25px;
     font-size: 16px !important;

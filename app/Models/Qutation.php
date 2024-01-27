@@ -13,6 +13,7 @@ class Qutation extends Model
     'requests_id',
     'Taxes',
     'Delivery',
+    'refuse_comment'
     ];
 
     function getrequest(){

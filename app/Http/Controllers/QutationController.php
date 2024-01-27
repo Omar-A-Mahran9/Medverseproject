@@ -63,17 +63,18 @@ class QutationController extends Controller
     }
     public function changestatue($quotationsearch){
         $data = request()->all();
+        $comment=null;
+
         if ($data["statue"] == "REJECTED"){
             request()->validate([
                 'comment'=>'required'
             ]);
-            $comment=$data['comment'];
+             $comment=$data['comment'];
         }
-        $comment=null;
         $statue = $data['statue'];
         $qutation=Qutation::findOrFail($quotationsearch);
         $qutation->statue=$statue;
-        $qutation->refuse_comment=$comment;
+         $qutation->refuse_comment=$comment;
         $qutation->save();
     }
 
