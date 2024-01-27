@@ -24,7 +24,8 @@
                     </div>
                 </div>
                 <div class="col-12 col-lg-5">
-                    <img src="@/assets/image/Inventoryimg.svg" width="100%" />
+                    <img src="@/assets/image/Education.jpeg" width="100%"                         style="border-radius: 25px"
+ />
                 </div>
             </div>
         </div>

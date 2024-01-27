@@ -6,14 +6,8 @@
                     <div>
                         <h1 class="txt">Welcome To Med-Verse!</h1>
                     </div>
-                    <div>
-                        <img
-                            src="@/assets/image/RectangleLogin.svg"
-                            class="cover"
-                        />
-                    </div>
                 </div>
-                <div class="col-12 col-md-6">
+                <div class="col-12 col-md-6 pl-5 pr-5 form-container">
                     <h3
                         style="margin-bottom: 100px !important"
                         class="mb-5 text-center"
@@ -173,19 +167,18 @@
                                 sign Up
                             </button>
                         </div>
+                        <div class="d-flex justify-content-center">
+                            Already have an account?
+                            <router-link
+                                :to="{ name: 'login' }"
+                                class="fw-bold"
+                                style="text-decoration: none; color: black"
+                                >Log in
+                            </router-link>
+                        </div>
                     </form>
                 </div>
             </div>
-        </div>
-
-        <div class="resg">
-            Already have an account?
-            <router-link
-                :to="{ name: 'login' }"
-                class="fw-bold"
-                style="text-decoration: none; color: black"
-                >Log in
-            </router-link>
         </div>
     </section>
 </template>
@@ -201,17 +194,30 @@ select {
     margin-left: 15px;
     text-align: center;
 }
-.resg {
-    position: absolute;
-    bottom: -70px;
-    right: 100px;
+
+.form-container {
+    position: relative;
+    width: 100%;
+    max-width: 600px; /* Adjust the max-width as needed */
+    margin: auto;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.8); /* Adjust the background opacity */
+    border-radius: 15px; /* Adjust the radius */
+
+    /* Add the following styles for the blurred background */
+    overflow: hidden;
+}
+
+input {
+    background: transparent;
 }
 .cover {
     width: 79%;
 }
 .txt {
-    width: 37% !important;
+    width: 100% !important;
     padding-bottom: 50px !important;
+    text-align: center;
 }
 .form {
     width: 80%;
@@ -233,13 +239,16 @@ div .mapdiv {
     border-radius: 20px !important;
 }
 .back {
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
-    position: absolute;
-    background: url("@/assets/image/Vectorlogin.svg");
-    background-repeat: no-repeat;
+    height: 100%;
+    background: url("@/assets/image/login.jpg") center center no-repeat;
+    background-size: cover;
 }
 .contain {
-    margin-top: 10%;
+    margin-top: 3%;
 }
 @media only screen and (max-width: 992px) {
     .respo {
@@ -260,13 +269,6 @@ div .mapdiv {
 
     .container-fluid {
         width: 100%;
-    }
-    .resg {
-        position: relative;
-        text-align: center !important;
-        width: 100%;
-        bottom: -6px;
-        right: 0px;
     }
 }
 

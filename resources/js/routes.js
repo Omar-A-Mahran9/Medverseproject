@@ -20,7 +20,7 @@ import SignupViewVue from "@/components/auth/SignupView.vue";
 import AcadmicView from "@/components/front/academic/Index.vue";
 import InventoryView from "@/components/front/Inventory/InventoryIndex.vue";
 import profilefront from "@/components/front/Profile/IndexComp.vue";
-import consultant from "@/components/front/academic/Index.vue";
+import consultant from "@/components/front/consltant/Index.vue";
 
 export default [
     {
@@ -50,7 +50,7 @@ export default [
     },
     {
         path: "/academic",
-        name: "acadmic",
+        name: "academic",
         component: AcadmicView,
     },
     {

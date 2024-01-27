@@ -1,123 +1,157 @@
 <template>
-    <section class="container-fluid back" style="width;: 100%px">
+    <section class="container-fluid back" style="width: 100%">
         <div class="container-fluid contain">
             <div class="row align-items-center justify-content-center">
                 <div class="col-12 col-md-6 respo">
-                    <div>
-                        <h1 class="txt">Welcome back!</h1>
+                    <div class="">
+                        <h1
+                            class="txt d-flex justify-content-center"
+                            style="
+                                font-weight: bold;
+                                font-size: 2.5em;
+                                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+                            "
+                        >
+                            Welcome back!
+                        </h1>
                     </div>
-                    <div>
+                    <!-- <div>
                         <img
-                            src="@/assets/image/RectangleLogin.svg"
+                            src="@/assets/image/login.jpeg"
                             class="cover"
                         />
-                    </div>
+                    </div> -->
                 </div>
+                <div class="col-12 col-md-6 login-container">
+                    <div class="blur-background">
+                        <div class="form-container">
+                            <h3
+                                style="margin-bottom: 100px !important"
+                                class="mb-5 text-center"
+                            >
+                                Login to your account
+                            </h3>
+                            <p
+                                class="text-danger text-center"
+                                v-text="errors.global"
+                            ></p>
 
-                <div class="col-12 col-md-6">
-                    <h3
-                        style="margin-bottom: 100px !important"
-                        class="mb-5 text-center"
-                    >
-                        Login to your account
-                    </h3>
-                    <p
-                        class="text-danger text-center"
-                        v-text="errors.global"
-                    ></p>
+                            <div
+                                v-if="cardentialerror"
+                                class="alert alert-danger text-center"
+                                role="alert"
+                            >
+                                {{ cardentialerror }}
+                            </div>
+                            <form class="form" @submit.prevent="Login()">
+                                <div class="row mb-5">
+                                    <div
+                                        class="col-sm-10 d-flex align-items-center"
+                                    >
+                                        <img
+                                            src="@/assets/image/Iconsax/Linear/profilecircle.svg"
+                                        />
 
-                    <div
-                        v-if="cardentialerror"
-                        class="alert alert-danger text-center"
-                        role="alert"
-                    >
-                        {{ cardentialerror }}
+                                        <input
+                                            style="background: transparent"
+                                            type="email"
+                                            name="email"
+                                            v-model="login.email"
+                                            class="form-control"
+                                            id="inputEmail3"
+                                            placeholder="Enter Your Email"
+                                        />
+                                    </div>
+                                    <div v-if="errors.email.length > 0">
+                                        <p
+                                            class="text-danger"
+                                            v-text="errors.email"
+                                        ></p>
+                                    </div>
+                                </div>
+                                <div class="row mb-5">
+                                    <div
+                                        class="col-sm-10 d-flex align-items-center"
+                                    >
+                                        <img
+                                            src="@/assets/image/Iconsax/Linear/lock1.svg"
+                                        />
+                                        <input
+                                            style="background: transparent"
+                                            type="password"
+                                            v-model="login.password"
+                                            name="password"
+                                            class="form-control"
+                                            id="inputPassword3"
+                                            placeholder="Enter Your Password"
+                                        />
+                                    </div>
+                                    <div v-if="errors.password.length > 0">
+                                        <p
+                                            class="text-danger"
+                                            v-text="errors.password"
+                                        ></p>
+                                    </div>
+                                </div>
+                                <!-- <a style="cursor: pointer">
+                                    <div class="mb-5 text-end">
+                                        Forgot Password ?
+                                    </div></a
+                                > -->
+                                <button
+                                    type="submit"
+                                    class="btn btn-primary form-control"
+                                >
+                                    Sign in
+                                </button>
+                            </form>
+                        </div>
                     </div>
-                    <form class="form" @submit.prevent="Login()">
-                        <div class="row mb-5">
-                            <div class="col-sm-10 d-flex align-items-center">
-                                <img
-                                    src="@/assets/image/Iconsax/Linear/profilecircle.svg"
-                                />
-
-                                <input
-                                    type="email"
-                                    name="email"
-                                    v-model="login.email"
-                                    class="form-control"
-                                    id="inputEmail3"
-                                    placeholder="Enter Your Email"
-                                />
-                            </div>
-                            <div v-if="errors.email.length > 0">
-                                <p
-                                    class="text-danger"
-                                    v-text="errors.email"
-                                ></p>
-                            </div>
-                        </div>
-                        <div class="row mb-5">
-                            <div class="col-sm-10 d-flex align-items-center">
-                                <img
-                                    src="@/assets/image/Iconsax/Linear/lock1.svg"
-                                />
-                                <input
-                                    type="password"
-                                    v-model="login.password"
-                                    name="password"
-                                    class="form-control"
-                                    id="inputPassword3"
-                                    placeholder="Enter Your Password"
-                                />
-                            </div>
-                            <div v-if="errors.password.length > 0">
-                                <p
-                                    class="text-danger"
-                                    v-text="errors.password"
-                                ></p>
-                            </div>
-                        </div>
-                        <a style="cursor: pointer">
-                            <div class="mb-5 text-end">
-                                Forgot Password ?
-                            </div></a
-                        >
-                        <button
-                            type="submit"
-                            class="btn btn-primary form-control"
-                        >
-                            Sign in
-                        </button>
-                    </form>
+                    <div class="resg d-flex justify-content-center">
+                        Don’t have an account ?
+                        <router-link
+                            :to="{ name: 'Signup' }"
+                            class="fw-bold"
+                            style="text-decoration: none; color: black"
+                            >Register Now
+                        </router-link>
+                    </div>
                 </div>
             </div>
-        </div>
-
-        <div class="resg">
-            Don’t have an account ?
-            <router-link
-                :to="{ name: 'Signup' }"
-                class="fw-bold"
-                style="text-decoration: none; color: black"
-                >Register Now
-            </router-link>
         </div>
     </section>
 </template>
 <style scoped>
+.form-container {
+    position: relative;
+    width: 100%;
+    max-width: 600px; /* Adjust the max-width as needed */
+    margin: auto;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.8); /* Adjust the background opacity */
+    border-radius: 15px; /* Adjust the radius */
+
+    /* Add the following styles for the blurred background */
+    overflow: hidden;
+}
 .swal2-container {
     z-index: 99999999 !important;
 }
-.resg {
-    position: absolute;
-    bottom: -70px;
-    right: 100px;
+.back {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url("@/assets/image/login.jpg") center center no-repeat;
+    background-size: cover;
 }
+
 .cover {
     width: 79%;
 }
 .txt {
-    width: 30% !important;
+    width: 100% !important;
     padding-bottom: 50px !important;
 }
 .form {
@@ -135,12 +169,6 @@ input {
 .btn-primary {
     background-color: #65c5b9;
     border-radius: 0;
-}
-.back {
-    width: 100%;
-    position: absolute;
-    background: url("@/assets/image/Vectorlogin.svg");
-    background-repeat: no-repeat;
 }
 .contain {
     margin-top: 10%;
@@ -162,13 +190,6 @@ input {
 
     .container-fluid {
         width: 100%;
-    }
-    .resg {
-        position: relative;
-        text-align: center !important;
-        width: 100%;
-        bottom: -6px;
-        right: 0px;
     }
 }
 

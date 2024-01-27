@@ -90,17 +90,17 @@ export default {
                 {
                     description:
                         " Now With Med-Verce you can Mange your dental clinic & save more money in easiest way",
-                    image: "profileback.svg",
+                    image: "profile.jpg",
                 },
                 {
                     description:
                         " Now With Med-Verce you can Mange your dental clinic & save more money in easiest way",
-                    image: "profileback.svg",
+                    image: "profile.jpg",
                 },
                 {
                     description:
                         " Now With Med-Verce you can Mange your dental clinic & save more money in easiest way",
-                    image: "profileback.svg",
+                    image: "profile.jpg",
                 },
             ],
         };

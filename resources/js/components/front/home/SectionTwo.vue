@@ -36,9 +36,13 @@
             >
                 <swiper-slide v-for="service in services" :key="service.title">
                     <div
-                        style="height: 355px !important"
                         class="cardimage col-4 mb-5"
-                        :style="{ 'background-image': `url(${service.image})` }"
+                        :style="{
+                            height: '355px !important',
+                            background: 'url(' + service.image + ')',
+                            'background-repeat': no - repeat,
+                            'background-size': cover,
+                        }"
                     >
                         <div class="card-body">
                             <div style="margin: 40px">
@@ -90,22 +94,32 @@ export default {
                     title: "Inventory System",
                     description: "service brief",
                     router: "inventory",
-                    image: "@/assets/image/InventoryImage.jpg",
+                    image: import("@/assets/image/Inventory.jpeg"),
                 },
                 {
                     title: "Consultant services",
                     description: "service brief",
                     router: "consultant",
-                    image: "@/assets/image/InventoryImage.jpg",
+                    image: import("@/assets/image/consultant.jpeg"),
                 },
                 {
                     title: "Academic services",
                     description: "service brief",
                     router: "academic",
-                    image: "@/assets/image/InventoryImage.jpg",
+                    image: import("@/assets/image/Education.jpeg"),
                 },
             ],
         };
+    },
+    created() {
+        // Load images asynchronously
+        this.services.forEach((service) => {
+            if (service.image) {
+                service.image.then((module) => {
+                    service.image = module.default;
+                });
+            }
+        });
     },
 };
 </script>
@@ -114,7 +128,6 @@ export default {
     overflow: unset !important;
 }
 .cardimage {
-    background: url("@/assets/image/Rectangle21.svg");
     background-repeat: no-repeat;
     background-size: cover;
     margin: auto;
