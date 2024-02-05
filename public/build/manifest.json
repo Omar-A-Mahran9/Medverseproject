@@ -84,6 +84,11 @@
     "isEntry": true,
     "src": "resources/css/app.css"
   },
+  "resources/css/app.scss": {
+    "file": "assets/app-39f28a98.css",
+    "isEntry": true,
+    "src": "resources/css/app.scss"
+  },
   "resources/js/app.css": {
     "file": "assets/app-ebf862f9.css",
     "src": "resources/js/app.css"
