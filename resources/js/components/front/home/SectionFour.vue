@@ -20,7 +20,7 @@
                 <div v-for="(course, i) in courses" :key="i" class="col">
                     <div class="card" style="margin: auto">
                         <img
-                            :src="imageUrl + '/' + course.courseImg"
+                            :src="course.courseImg"
                             class="card-img-top"
                             style="border-radius: 25px !important"
                             alt="..."
@@ -29,7 +29,7 @@
                             <h5 class="card-title mb-4">
                                 {{ course.coursetitle }}
                             </h5>
-                            <div class="d-flex align-items-center">
+                            <!-- <div class="d-flex align-items-center">
                                 <div>
                                     <img
                                         style="margin-top: -20px"
@@ -65,7 +65,7 @@
                                         }}
                                     </p>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>
@@ -74,52 +74,19 @@
     </section>
 </template>
 <script>
+import { ref } from "vue";
+
 export default {
     data() {
         const imageUrl = new URL("../../../assets/image/", import.meta.url);
 
-        var courses = [
-            {
-                coursetitle: "Course1",
-                category: "Popular",
-                courseImg: "courses.svg",
-                instructorDetails: {
-                    image: "Ellipse.svg",
-                    instructorname: "Dianne Russell",
-                    instructortitle: "Manchester, Kentucky",
-                },
-            },
-            {
-                coursetitle: "Course2",
-                category: "New house",
-                courseImg: "courses.svg",
-                instructorDetails: {
-                    image: "Ellipse.svg",
-                    instructorname: "Robert Fox",
-                    instructortitle: "Dr. San Jose, South Dakota",
-                },
-            },
-            {
-                coursetitle: "Course 3",
-                category: "Best Deals",
-                courseImg: "courses.svg",
-                instructorDetails: {
-                    image: "Ellipse.svg",
-                    instructorname: "Ronald Richards",
-                    instructortitle: "Santa Ana, Illinois",
-                },
-            },
-            {
-                coursetitle: "Course 4",
-                category: "Best Deals",
-                courseImg: "courses.svg",
-                instructorDetails: {
-                    image: "Ellipse.svg",
-                    instructorname: "Jenny Wilson",
-                    instructortitle: "Preston Rd. Inglewood, Maine 98380",
-                },
-            },
-        ];
+        var courses = ref([]);
+        console.log(courses.value);
+        axios.get("/api/apievents").then((response) => {
+            // console.log(response.data.data);
+
+            courses.value = response.data.data;
+        });
         return { courses, imageUrl };
     },
 };

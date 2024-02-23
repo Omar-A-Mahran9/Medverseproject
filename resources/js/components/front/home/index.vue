@@ -71,5 +71,4 @@ export default {
     background-color: black;
     opacity: 0.2; /* Adjust the opacity as needed */
 }
-
 </style>

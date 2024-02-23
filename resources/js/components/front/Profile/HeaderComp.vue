@@ -30,7 +30,11 @@
             </form>
 
             <div class="d-flex gap-4 align-items-center">
-                Welcome {{ user.user.name }} !
+                <div v-if="user.user.type == 'DOCTOR'">
+                    Welcome <strong>DR.</strong>{{ user.user.name }} !
+                </div>
+                <div v-else>Welcome {{ user.user.name }} !</div>
+
                 <button @click="logout" class="btn btn-primary">Logout</button>
 
                 <button

@@ -55,6 +55,27 @@
                             >Contact Us</a
                         >
                     </li>
+
+                    <div>
+                        <a
+                            v-if="islogin == true"
+                            href="admin"
+                            class="nav-link seccolor me-4 res"
+                            >Dashboard</a
+                        >
+                        <div v-if="!islogin" class="d-flex">
+                            <li class="nav-item">
+                                <a href="login" class="nav-link me-4 ress">
+                                    Login</a
+                                >
+                            </li>
+                            <li class="nav-item">
+                                <a href="register" class="nav-link me-4 ress"
+                                    >Register</a
+                                >
+                            </li>
+                        </div>
+                    </div>
                     <!-- <li class="nav-item me-4 res">
             <a class="nav-link btn btn-primary text-white botto" href="#"
               >Register</a
@@ -70,7 +91,12 @@
         </div>
     </nav>
 </template>
-<script></script>
+<script setup>
+let islogin = window.Laravel.isLoggedin;
+let user = window.Laravel.user ?? null;
+
+console.log(islogin);
+</script>
 <style scoped>
 .white-fill {
     filter: brightness(0) invert(1) saturate(100%) brightness(100%)

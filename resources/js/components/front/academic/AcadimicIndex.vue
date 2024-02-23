@@ -1,31 +1,37 @@
 <template>
     <section style="position: relative" class="mt-5">
-        <div class="container-fluid">
-            <div
-                class="row align-items-center justify-content-center text-center text-md-start"
-                style="margin-bottom: 200px"
-            >
-                <div class="col-12 col-lg-7 mb-5">
-                    <div class="wi">
-                        <h1>Welcome to Med-verse Cloud Inventory System</h1>
-                        <p>
-                            We provide cloud solution platform to help you
-                            manage your dental clinic products stock with newest
-                            technology to help you care and check all your
-                            monthly expenditure for each clinic of the dental.
-                        </p>
-                        <button
-                            style="border-radius: 10px; width: 200px"
-                            class="btn btn-primary mt-4"
-                        >
-                            Grt started
-                            <img class="ms-3" src="@/assets/image/arrow.svg" />
-                        </button>
+        <div class="coverr">
+            <div class="container-fluid">
+                <div
+                    class="row align-items-center justify-content-center text-center text-md-start"
+                    style="margin-bottom: 200px"
+                >
+                    <div class="col-12 col-lg-7 mb-5">
+                        <div class="wi">
+                            <h1>Welcome to Med-verse Cloud Inventory System</h1>
+                            <p>
+                                We provide cloud solution platform to help you
+                                manage your dental clinic products stock with
+                                newest technology to help you care and check all
+                                your monthly expenditure for each clinic of the
+                                dental.
+                            </p>
+                            <button
+                                style="border-radius: 10px; width: 200px"
+                                class="btn btn-primary mt-4"
+                            >
+                                Grt started
+                                <img
+                                    class="ms-3"
+                                    src="@/assets/image/arrow.svg"
+                                />
+                            </button>
+                        </div>
                     </div>
-                </div>
-                <div class="col-12 col-lg-5">
-                    <img src="@/assets/image/Education.jpeg" width="100%"                         style="border-radius: 25px"
- />
+                    <div class="col-12 col-lg-5">
+                        <!-- <img src="@/assets/image/Education.jpeg" width="100%"                         style="border-radius: 25px"
+ /> -->
+                    </div>
                 </div>
             </div>
         </div>
@@ -113,6 +119,13 @@ export default {
 };
 </script>
 <style scoped>
+.coverr {
+    background-image: url("@/assets/image/Education.jpeg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
 .wi {
     width: 80%;
 }

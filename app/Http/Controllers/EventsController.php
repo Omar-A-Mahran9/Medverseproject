@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\eventsResorce;
 use App\Models\Events;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -17,7 +18,11 @@ class EventsController extends Controller
         $allevent=Events::latest()->get();
         return $allevent;
     }
-
+    public function apiindex()
+    {
+        $allevent=Events::latest()->get();
+        return eventsResorce::collection( $allevent);
+    }
     /**
      * Show the form for creating a new resource.
      */

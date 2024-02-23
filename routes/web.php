@@ -112,6 +112,8 @@ Route::group(['middleware'=>['auth']], function () {
     Route::get('/api/usersobject',[Usercontroller::class,'users']);
     Route::get('/productperuser/{id}',[ProductController::class,'indexproduct']);
     Route::get('/api/events',[EventsController::class,'index']);
+    Route::get('/api/apievents',[EventsController::class,'apiindex']);
+
     Route::get('/group',[GroupproductController::class,'index']);
     Route::get('/group/{id}',[GroupproductController::class,'show']);
 
