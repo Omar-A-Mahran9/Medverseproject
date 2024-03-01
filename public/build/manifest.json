@@ -80,7 +80,7 @@
     "src": "node_modules/dompurify/dist/purify.es.js"
   },
   "resources/css/app.css": {
-    "file": "assets/app-a6d52189.css",
+    "file": "assets/app-20eb4c01.css",
     "isEntry": true,
     "src": "resources/css/app.css"
   },
