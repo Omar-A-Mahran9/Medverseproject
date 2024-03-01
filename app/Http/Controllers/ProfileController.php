@@ -21,7 +21,8 @@ class ProfileController extends Controller
     public function index()
     {
         $user=Auth::user();
-        return $user ;
+        $user->profile;
+         return $user ;
     }
 public function updatepass(Request $request,UpdateUserPassword $updater){
 $updater->update(

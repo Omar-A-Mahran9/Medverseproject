@@ -1,72 +1,24 @@
 <template>
-    <section id="ourservices" class="section pb-5" style="overflow: hidden">
+    <section id="aboutus" class="section pb-5" style="overflow: hidden">
         <div
             class="container-fluid d-flex flex-column align-items-center mb-3 justify-content-center"
         >
             <p class="text-center" style="color: #f59e0b">
-                See O<span
+                See w<span
                     style="border-top: 2px solid #f59e0b; padding-top: 8px"
-                    >ur Se</span
-                >rvices
+                    >hat we are</span
+                >
             </p>
-            <h3 class="text-center">Explore our cloud Solutions</h3>
+            <h3 class="text-center">About Us</h3>
         </div>
-        <div class="row gap-5">
-            <swiper
-                :slidesPerView="1"
-                :pagination="{
-                    clickable: true,
-                }"
-                :breakpoints="{
-                    '640': {
-                        slidesPerView: 1,
-                        spaceBetween: 20,
-                    },
-                    '900': {
-                        slidesPerView: 2,
-                        spaceBetween: 40,
-                    },
-                    '1200': {
-                        slidesPerView: 3,
-                        spaceBetween: 50,
-                    },
-                }"
-                :modules="modules"
-                class="mySwiper"
-            >
-                <swiper-slide v-for="service in services" :key="service.title">
-                    <div
-                        class="cardimage col-4 mb-5"
-                        :style="{
-                            height: '355px !important',
-                            background: 'url(' + service.image + ')',
-                            'background-repeat': no - repeat,
-                            'background-size': cover,
-                        }"
-                    >
-                        <div class="card-body">
-                            <div style="margin: 40px">
-                                <h4>{{ service.title }}</h4>
-                                <p style="font-weight: lighter">
-                                    {{ service.description }}
-                                </p>
-                                <a
-                                    :href="'/' + service.router"
-                                    class="btn btn-primary float-right"
-                                    style="
-                                        position: absolute;
-                                        height: 20% !important;
-                                        margin-right: 30px;
-                                        right: 0 !important;
-                                    "
-                                >
-                                    Learn More
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </swiper-slide>
-            </swiper>
+        <div class="gap-5 container text-center" style="width: 70%;">
+            <h5 style="font-weight: normal; line-height: 40px">
+                At Med-Verse, we're revolutionizing healthcare services by
+                leveraging the power of cloud technology. Our mission is to
+                streamline operations and enhance efficiency in clinics,
+                enabling them to focus on what truly matters - providing
+                exceptional operation management
+            </h5>
         </div>
     </section>
 </template>
@@ -97,7 +49,7 @@ export default {
                     image: import("@/assets/image/Inventory.jpeg"),
                 },
                 {
-                    title: "Consultancy Services",
+                    title: "Consultation Services",
                     description: "service brief",
                     router: "consultant",
                     image: import("@/assets/image/consultant.jpeg"),

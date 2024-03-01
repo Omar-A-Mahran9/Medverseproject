@@ -39,7 +39,7 @@
                                                     <th>id</th>
                                                     <th>Product Name</th>
                                                     <th>Product ID</th>
-                                                    <th>Group Name</th>
+                                                    <th>Specialized Clinic</th>
                                                     <th>Stock in Qty</th>
                                                     <th>Action</th>
                                                 </tr>

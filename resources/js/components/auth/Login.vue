@@ -3,18 +3,6 @@
         <div class="container-fluid contain">
             <div class="row align-items-center justify-content-center">
                 <div class="col-12 col-md-6 respo">
-                    <div class="">
-                        <h1
-                            class="txt d-flex justify-content-center"
-                            style="
-                                font-weight: bold;
-                                font-size: 2.5em;
-                                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-                            "
-                        >
-                            Welcome back!
-                        </h1>
-                    </div>
                     <!-- <div>
                         <img
                             src="@/assets/image/login.jpeg"
@@ -22,15 +10,24 @@
                         />
                     </div> -->
                 </div>
-                <div class="col-12 col-md-6 login-container">
+                <div class="col-12 col-md-12 login-container">
                     <div class="blur-background">
                         <div class="form-container">
-                            <h3
-                                style="margin-bottom: 100px !important"
-                                class="mb-5 text-center"
+                            <div
+                                class="d-flex flex-column align-items-center gap-4"
                             >
-                                Login to your account
-                            </h3>
+                                <a class="navbar-brand" href="/">
+                                    <img
+                                        src="@/assets/image/Logo.svg"
+                                        width="200"
+                                        class="white-fill"
+                                    />
+                                </a>
+                                <h3 style="margin-bottom: 50px !important">
+                                    Login to your account
+                                </h3>
+                            </div>
+
                             <p
                                 class="text-danger text-center"
                                 v-text="errors.global"

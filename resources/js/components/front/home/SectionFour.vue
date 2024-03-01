@@ -12,24 +12,30 @@
                     ></div>
                     Our Recommendation
                 </div>
-                <div style="margin-left: 35px"><h4>Featured Cources</h4></div>
+                <div style="margin-left: 35px"><h4>Up Coming Events</h4></div>
             </div>
         </div>
         <div class="container-fluid">
             <div class="row align-items-center justify-content-center">
                 <div v-for="(course, i) in courses" :key="i" class="col">
-                    <div class="card" style="margin: auto">
-                        <img
-                            :src="course.courseImg"
-                            class="card-img-top"
-                            style="border-radius: 25px !important"
-                            alt="..."
-                        />
-                        <div class="card-body">
-                            <h5 class="card-title mb-4">
-                                {{ course.coursetitle }}
-                            </h5>
-                            <!-- <div class="d-flex align-items-center">
+                    <a :href="course.main_title" style="text-decoration: none">
+                        <div class="card" style="margin: auto">
+                            <img
+                                :src="course.courseImg"
+                                class="card-img-top"
+                                style="border-radius: 25px !important"
+                                alt="..."
+                            />
+                            <div
+                                class="card-body d-flex justify-content-between"
+                            >
+                                <h5 class="card-title mb-4">
+                                    {{ course.coursetitle }}
+                                </h5>
+                                <p class="card-text text-muted">
+                                    {{ course.date }}
+                                </p>
+                                <!-- <div class="d-flex align-items-center">
                                 <div>
                                     <img
                                         style="margin-top: -20px"
@@ -66,8 +72,9 @@
                                     </p>
                                 </div>
                             </div> -->
+                            </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
             </div>
         </div>

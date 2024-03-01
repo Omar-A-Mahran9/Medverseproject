@@ -20,7 +20,11 @@
             class="card-header d-flex align-items-center justify-content-between"
         >
             <h3 class="card-title">Add new Request</h3>
-            <div class="btn btn-success ml-auto" @click="addproduct">
+            <div
+                class="btn ml-auto"
+                @click="addproduct"
+                style="background-color: #ffffff; color: #1d617a"
+            >
                 + Add new product
             </div>
         </div>

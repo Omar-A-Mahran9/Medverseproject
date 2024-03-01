@@ -114,7 +114,7 @@
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label for="productname"
-                                            >number of Clinic</label
+                                            >Number of Clinic</label
                                         >
                                         <div class="quantity-toggle d-flex">
                                             <button
@@ -146,27 +146,27 @@
                                         class="form-group col-md-6"
                                     >
                                         <label for="productname"
-                                            >Clinic name</label
+                                            >Clinic Name</label
                                         >
                                         <input
                                             type="text"
                                             class="form-control"
                                             id="productname"
                                             v-model="clinics[index - 1].name"
-                                            placeholder="Enter product name"
+                                            placeholder="Enter clinic Name"
                                         />
                                     </div>
                                     <!-- <span>{{ clinics[index - 1].name }}</span> -->
                                 </div>
 
                                 <div
-                                    class="float-right d-flex align-items-center"
+                                    class="text-success float-right d-flex align-items-center"
                                 >
                                     <div class="pr-2">
-                                        <h5 class="">Price</h5>
+                                        <h5 class=""><strong>Price</strong></h5>
                                     </div>
                                     <div>
-                                        <h4>{{ totalprice }} $</h4>
+                                        <h4>{{ totalprice }} RSA</h4>
                                     </div>
                                 </div>
                             </div>

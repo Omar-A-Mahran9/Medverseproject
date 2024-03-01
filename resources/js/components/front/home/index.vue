@@ -12,10 +12,12 @@
         <headercomp />
         <sectionone />
     </div>
+    <about />
+
     <sectiontwo />
     <sectionthree />
     <sectionfour />
-    <sectionfive />
+    <!-- <sectionfive /> -->
     <!-- <sectionsix /> -->
     <footercomp />
 </template>
@@ -27,7 +29,7 @@ import sectionthree from "@/components/front/home/SectionThree.vue";
 import sectionfour from "@/components/front/home/SectionFour.vue";
 import sectionfive from "@/components/front/home/SectionFive.vue";
 import sectionsix from "@/components/front/home/SectionSix.vue";
-
+import about from "@/components/front/home/aboutus.vue";
 import footercomp from "@/components/front/home/layout/FooterView.vue";
 export default {
     components: {
@@ -39,6 +41,7 @@ export default {
         sectionfive,
         sectionsix,
         footercomp,
+        about,
     },
 };
 </script>

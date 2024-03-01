@@ -59,28 +59,26 @@
                         <ul class="list-unstyled mb-0 d-flex flex-column gap-3">
                             <li>
                                 <a
-                                    href="#!"
+                                    href="#aboutus"
                                     class="text-secondary"
                                     style="text-decoration: none"
                                     >About us</a
                                 >
                             </li>
                             <li>
-                                <router-link
-                                    :to="{ name: 'home', hash: '#ourservices' }"
+                                <a
+                                    href="#ourservices"
                                     class="text-secondary"
                                     style="text-decoration: none"
-                                    >Our Services</router-link
+                                    >Our Services</a
                                 >
                             </li>
                             <li>
-                                <router-link
-                                    :to="{ name: 'home', hash: '#ourstory' }"
-                                    href="#!"
+                                <a
+                                    href="#ourstory"
                                     class="text-secondary"
                                     style="text-decoration: none"
-                                    >Our Story</router-link
-                                >
+                                    >Our Story</a
                                 >
                             </li>
                         </ul>
@@ -105,7 +103,7 @@
                                     href="#!"
                                     class="text-secondary"
                                     style="text-decoration: none"
-                                    >(671) 555-0110</a
+                                    >+966 50 535 8306</a
                                 >
                             </li>
                             <li>

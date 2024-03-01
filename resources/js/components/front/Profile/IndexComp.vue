@@ -12,7 +12,7 @@
                 clickable: true,
             }"
             :autoplay="{
-                delay: 2500,
+                delay: 10000,
                 disableOnInteraction: false,
             }"
             :pagination="{
@@ -95,12 +95,12 @@ export default {
                 {
                     description:
                         " Now With Med-Verce you can Mange your dental clinic & save more money in easiest way",
-                    image: "profile.jpg",
+                    image: "Ourstory.jpg",
                 },
                 {
                     description:
                         " Now With Med-Verce you can Mange your dental clinic & save more money in easiest way",
-                    image: "profile.jpg",
+                    image: "Consultant.jpeg",
                 },
             ],
         };

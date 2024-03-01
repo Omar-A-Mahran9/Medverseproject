@@ -34,7 +34,9 @@
             <a class="nav-link primarycolor me-4 res" href="#">Services</a>
           </li> -->
                     <li class="nav-item">
-                        <a class="nav-link seccolor me-4 res" href="#"
+                        <a
+                            class="nav-link seccolor me-4 res"
+                            href="#aboutus"
                             >About Us</a
                         >
                     </li>
@@ -94,8 +96,6 @@
 <script setup>
 let islogin = window.Laravel.isLoggedin;
 let user = window.Laravel.user ?? null;
-
-console.log(islogin);
 </script>
 <style scoped>
 .white-fill {
@@ -114,9 +114,13 @@ console.log(islogin);
 }
 
 @media only screen and (max-width: 991px) {
+    .navbar-collapse {
+        background-color: #1d617a !important;
+        border-radius: 25px;
+        margin-top: 10px;
+    }
     .botto {
         width: 150px;
-
         margin: 10px;
     }
     .res {

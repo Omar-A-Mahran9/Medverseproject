@@ -20,6 +20,7 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+    protected $appends = ['profile'];
     protected $fillable = [
         'name',
         'phone',
@@ -38,9 +39,21 @@ class User extends Authenticatable
         'Package_id',
         'password',
     ];
+    public function getProfileAttribute()
+    {
+        return $this->image ? $this->getImageFullPath($this->image) : null;
+    }
+    protected function getImageFullPath($imageName)
+    {
+      
+
+        // Concatenate the base URL and the image filename
+        return asset('Storage/'.$imageName);
+    }
     protected $attributes = [
         'role' => 'CLIENT', 
     ];
+
     /**
      * The attributes that should be hidden for serialization.
      *

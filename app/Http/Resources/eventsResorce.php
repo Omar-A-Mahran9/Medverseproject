@@ -16,14 +16,15 @@ class eventsResorce extends JsonResource
     public function toArray(Request $request): array
     {
         $allevent=Events::latest()->get();
+        $imagePath = asset('storage/'.$this->image);
         return [
             'id' => $this->id,
             'coursetitle'=> $this->eventname,
-            'CarName'=>$this->eventdate,
+            'date'=>$this->eventdate,
             'main_title' => $this->eventlink,
             'description'=>  $this->eventlocation ,
             'publish_date'=>$this->created_at->format('Y-m-d '),
-            'courseImg'=>$this->image,
+            'courseImg'=>$imagePath,
         ];
         {
             //     coursetitle: "Course1",

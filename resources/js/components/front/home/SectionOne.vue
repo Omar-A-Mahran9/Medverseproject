@@ -7,16 +7,17 @@
                         class="text-capitalize seccolor title"
                         style="color: white !important"
                     >
-                        Med-Verse offers a
+                        Welcome to Med-Verse!
+
                         <span
                             style="
                                 -webkit-text-fill-color: transparent;
                                 text-stroke: 2px;
                                 -webkit-text-stroke-width: 2px;
                             "
-                            >Cloud Solution Platform</span
+                            >We’re on a mission</span
                         >
-                        to help you mange your dental clinic products
+                        to transform the healthcare industry
                     </p>
                 </div>
                 <div>

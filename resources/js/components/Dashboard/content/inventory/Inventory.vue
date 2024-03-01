@@ -48,7 +48,7 @@
                                                 <th>id</th>
                                                 <th>Product Name</th>
                                                 <th>Product ID</th>
-                                                <th>Group Name</th>
+                                                <th>Specialized Clinic</th>
                                                 <th class="text-center">
                                                     Stock in Qty
                                                 </th>
@@ -423,7 +423,9 @@
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                                <label for="productname">Group name</label>
+                                <label for="productname"
+                                    >Specialized Clinic</label
+                                >
                                 <select
                                     name="group_id"
                                     v-model="product.group_id"
@@ -431,7 +433,7 @@
                                     class="form-control"
                                 >
                                     <option hidden value="">
-                                        Group name not selectd
+                                        Specialized Clinic not selectd
                                     </option>
                                     <option
                                         v-for="groupitem in group"
@@ -546,14 +548,16 @@
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                                <label for="productname">Group name</label>
+                                <label for="productname"
+                                    >Specialized Clinic</label
+                                >
                                 <select
                                     name="group_id"
                                     v-model="product.group_id"
                                     class="form-control"
                                 >
                                     <option hidden value="">
-                                        Group name notselectd
+                                        Specialized Clinic not selectd
                                     </option>
                                     <option
                                         v-for="groupitem in group"

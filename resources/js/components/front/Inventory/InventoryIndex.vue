@@ -1,40 +1,162 @@
 <template>
-    <section style="position: relative" class="mt-5">
-        <div class="container-fluid">
-            <div
-                class="row align-items-center justify-content-center text-center text-md-start"
-                style="margin-bottom: 200px"
+    <section style="position: relative">
+        <div class="coverr mb-5">
+            <nav
+                class="navbar navbar-expand-lg pt-5 mb-5 pb-3"
+                style="z-index: 9999"
             >
-                <div class="col-12 col-lg-7 mb-5">
-                    <div class="wi">
-                        <h1>Welcome to Med-verse Cloud Inventory System</h1>
-                        <p>
-                            We provide cloud solution platform to help you
-                            manage your dental clinic products stock with newest
-                            technology to help you care and check all your
-                            monthly expenditure for each clinic of the dental.
-                        </p>
-                        <a
-                            href="#inventoryservices"
-                            style="border-radius: 10px; width: 200px"
-                            class="btn btn-primary mt-4 pt-2"
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="/"
+                        ><img
+                            src="@/assets/image/Logo.svg"
+                            width="200"
+                            class="white-fill"
+                    /></a>
+                    <button
+                        class="navbar-toggler"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent"
+                        aria-controls="navbarSupportedContent"
+                        aria-expanded="false"
+                        aria-label="Toggle navigation"
+                    >
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div
+                        class="collapse navbar-collapse"
+                        id="navbarSupportedContent"
+                    >
+                        <ul
+                            class="navbar-nav ms-auto mb-2 mb-lg-0 justify-content-center align-items-center"
                         >
-                            Grt started
-                            <img class="ms-3" src="@/assets/image/arrow.svg" />
-                        </a>
+                            <!-- <li class="nav-item">
+            <a class="nav-link primarycolor" aria-current="page" href="#"
+              >Home</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link primarycolor" href="#">About Us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link primarycolor me-4 res" href="#">Services</a>
+          </li> -->
+                            <li class="nav-item">
+                                <a class="nav-link seccolor me-4 res" href="#"
+                                    >About Us</a
+                                >
+                            </li>
+                            <li class="nav-item">
+                                <a
+                                    href="#ourservices"
+                                    class="nav-link seccolor me-4 res"
+                                    >Services</a
+                                >
+                            </li>
+                            <li class="">
+                                <a
+                                    href="#ourstory"
+                                    class="nav-link seccolor me-4 res"
+                                    >Our Story</a
+                                >
+                            </li>
+                            <li class="nav-item">
+                                <a
+                                    href="#footer"
+                                    class="nav-link seccolor me-4 res"
+                                    >Contact Us</a
+                                >
+                            </li>
+
+                            <div>
+                                {{ isLogin }}
+                                <a
+                                    v-if="islogin == true"
+                                    href="admin"
+                                    class="nav-link seccolor me-4 res"
+                                    >Dashboard</a
+                                >
+                                <div v-if="!islogin" class="d-flex">
+                                    <li class="nav-item">
+                                        <a
+                                            href="login"
+                                            class="nav-link me-4 ress"
+                                        >
+                                            Login</a
+                                        >
+                                    </li>
+                                    <li class="nav-item">
+                                        <a
+                                            href="register"
+                                            class="nav-link me-4 ress"
+                                            >Register</a
+                                        >
+                                    </li>
+                                </div>
+                            </div>
+                            <!-- <li class="nav-item me-4 res">
+            <a class="nav-link btn btn-primary text-white botto" href="#"
+              >Register</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link btn btn-primary text-white botto" href="#"
+              >Login</a
+            >
+          </li> -->
+                        </ul>
                     </div>
                 </div>
-                <div class="col-12 col-lg-5">
-                    <img
-                        src="@/assets/image/Inventory.jpeg"
-                        width="100%"
-                        style="border-radius: 25px"
-                    />
+            </nav>
+            <div class="container-fluid cov pt-5 pb-3">
+                <div
+                    class="row align-items-center justify-content-center text-center text-md-start"
+                    style="margin-bottom: 200px"
+                >
+                    <div class="col-12 col-lg-7 mb-5">
+                        <div class="wi">
+                            <h1 class="mb-3">Welcome to Med-verse Cloud Inventory System</h1>
+                            <p style="text-align: justify; font-weight: 400">
+                                Our Cloud Inventory System is the backbone of
+                                your healthcare organization, offering a
+                                real-time, comprehensive view of your inventory
+                                status. It eliminates the complexities of
+                                inventory management, allowing you to
+                                effortlessly track, manage, and analyze your
+                                stock levels. This leads to significant cost
+                                reductions and improved operational efficiency.
+                            </p>
+                            <p style="text-align: justify; font-weight: 400">
+                                Our E-Store serves as your digital marketplace
+                                for medical supplies. With an intuitive
+                                interface and secure platform, it simplifies
+                                procurement processes and ensures you always
+                                have what you need when you need it. The E-Store
+                                is more than just a supply store; it's a
+                                strategic tool for efficient resource
+                                management.
+                            </p>
+                            <button
+                                style="border-radius: 10px; width: 200px"
+                                class="btn btn-primary mt-4"
+                            >
+                                Grt started
+                                <img
+                                    class="ms-3"
+                                    src="@/assets/image/arrow.svg"
+                                />
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-5">
+                        <!-- <img src="@/assets/image/Education.jpeg" width="100%"                         style="border-radius: 25px"
+ /> -->
+                    </div>
                 </div>
             </div>
         </div>
         <div class="container-fluid" id="inventoryservices">
-            <div class="row align-items-center justify-content-center">
+            <!-- <div class="row align-items-center justify-content-center">
                 <div v-for="(service, i) in services" :key="i" class="col mb-5">
                     <div class="card" style="margin: auto">
                         <div class="card-body mt-4 ms-4">
@@ -75,7 +197,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <sectionsix />
         </div>
     </section>
@@ -92,7 +214,8 @@ export default {
     },
     data() {
         const imageUrl = new URL("../../../assets/image/", import.meta.url);
-
+        const islogin = window.Laravel.isLoggedin;
+        const user = window.Laravel.user ?? null;
         var services = [
             {
                 servicestitle: "Service Request ",
@@ -123,16 +246,34 @@ export default {
                 button: "Get started",
             },
         ];
-        return { imageUrl, services };
+        return { imageUrl, services, islogin, user };
     },
 };
 </script>
 <style scoped>
+.coverr {
+    background-image: url("@/assets/image/inventory.jpeg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
 .swal2-container {
     z-index: 999999999999999 !important;
 }
 .wi {
     width: 80%;
+}
+.res {
+    border-radius: 25px;
+    font-size: 16px !important;
+    border: 1px solid #1b1c57 !important;
+    color: #1b1c57 !important;
+}
+.res:hover {
+    background-color: #1d617a !important;
+    border: 1px solid #1d617a !important;
+    border: 1px solid #1d617a !important;
+    color: #ffffff !important;
 }
 .card {
     background-color: #d6efeb;

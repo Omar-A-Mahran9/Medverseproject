@@ -133,7 +133,7 @@
                             <li class="nav-item">
                                 <router-link :to={name:'admin.dashboard'} active-class='active' class="nav-link"
                                     style="color: white">
-                                    <i class="nav-icon fas fa-tachometer-alt"></i>
+                                    <i class="nav-icon fas fa-home"></i>
                                     <p>
                                         Home
                                     </p>
@@ -157,7 +157,7 @@
                             <li class="nav-item">
                                 <router-link :to={name:'admin.inventory'} active-class='active' class="nav-link"
                                     style="color: white">
-                                    <i class="nav-icon fas fa-home"></i>
+                                    <i class="nav-icon fas fa-shopping-cart"></i>
                                     <p>
                                         Inventory
                                     </p>
@@ -265,9 +265,8 @@
                                 style="color: white">
 
                                 <i class="nav-icon fas fa-fire"></i>
-                                <p>
-                                    Book Consultant
-                                    Session </p>
+                                <p style="font-size: 14px">
+                                    Book Consultation Session </p>
                             </router-link>
                         </li>
                         <li class="nav-item">

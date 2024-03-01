@@ -1,20 +1,129 @@
 <template>
-    <section style="position: relative" class="mt-5">
-        <div class="coverr">
-            <div class="container-fluid">
+    <section style="position: relative">
+        <div class="coverr mb-5">
+            <nav
+                class="navbar navbar-expand-lg pt-5 mb-5 pb-5"
+                style="z-index: 9999"
+            >
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="/"
+                        ><img
+                            src="@/assets/image/Logo.svg"
+                            width="200"
+                            class="white-fill"
+                    /></a>
+                    <button
+                        class="navbar-toggler"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent"
+                        aria-controls="navbarSupportedContent"
+                        aria-expanded="false"
+                        aria-label="Toggle navigation"
+                    >
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div
+                        class="collapse navbar-collapse"
+                        id="navbarSupportedContent"
+                    >
+                        <ul
+                            class="navbar-nav ms-auto mb-2 mb-lg-0 justify-content-center align-items-center"
+                        >
+                            <!-- <li class="nav-item">
+            <a class="nav-link primarycolor" aria-current="page" href="#"
+              >Home</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link primarycolor" href="#">About Us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link primarycolor me-4 res" href="#">Services</a>
+          </li> -->
+                            <li class="nav-item">
+                                <a class="nav-link seccolor me-4 res" href="#"
+                                    >About Us</a
+                                >
+                            </li>
+                            <li class="nav-item">
+                                <a
+                                    href="#ourservices"
+                                    class="nav-link seccolor me-4 res"
+                                    >Services</a
+                                >
+                            </li>
+                            <li class="">
+                                <a
+                                    href="#ourstory"
+                                    class="nav-link seccolor me-4 res"
+                                    >Our Story</a
+                                >
+                            </li>
+                            <li class="nav-item">
+                                <a
+                                    href="#footer"
+                                    class="nav-link seccolor me-4 res"
+                                    >Contact Us</a
+                                >
+                            </li>
+
+                            <div>
+                                {{ isLogin }}
+                                <a
+                                    v-if="islogin == true"
+                                    href="admin"
+                                    class="nav-link seccolor me-4 res"
+                                    >Dashboard</a
+                                >
+                                <div v-if="!islogin" class="d-flex">
+                                    <li class="nav-item">
+                                        <a
+                                            href="login"
+                                            class="nav-link me-4 ress"
+                                        >
+                                            Login</a
+                                        >
+                                    </li>
+                                    <li class="nav-item">
+                                        <a
+                                            href="register"
+                                            class="nav-link me-4 ress"
+                                            >Register</a
+                                        >
+                                    </li>
+                                </div>
+                            </div>
+                            <!-- <li class="nav-item me-4 res">
+            <a class="nav-link btn btn-primary text-white botto" href="#"
+              >Register</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link btn btn-primary text-white botto" href="#"
+              >Login</a
+            >
+          </li> -->
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <div class="container-fluid cov pt-5 pb-3">
                 <div
                     class="row align-items-center justify-content-center text-center text-md-start"
                     style="margin-bottom: 200px"
                 >
                     <div class="col-12 col-lg-7 mb-5">
                         <div class="wi">
-                            <h1>Welcome to Med-verse Cloud Inventory System</h1>
-                            <p>
-                                We provide cloud solution platform to help you
-                                manage your dental clinic products stock with
-                                newest technology to help you care and check all
-                                your monthly expenditure for each clinic of the
-                                dental.
+                            <h1>Welcome to Med-verse Academy</h1>
+                            <p style="text-align: justify; font-weight: 400;">
+                                The Med-Verse Academy is our commitment to
+                                continuous learning and development in the
+                                healthcare sector. We offer a range of courses
+                                and training programs designed to equip your
+                                team with the latest knowledge and skills. With
+                                Med-Verse Academy, you're not just staying
+                                updated; you're staying ahead.
                             </p>
                             <button
                                 style="border-radius: 10px; width: 200px"
@@ -36,7 +145,7 @@
             </div>
         </div>
         <div class="container-fluid">
-            <div class="row align-items-center justify-content-center">
+            <!-- <div class="row align-items-center justify-content-center">
                 <div
                     v-for="(service, i) in services"
                     :key="i"
@@ -81,13 +190,15 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
     </section>
 </template>
 <script>
 export default {
     data() {
+        const islogin = window.Laravel.isLoggedin;
+        const user = window.Laravel.user ?? null;
         const imageUrl = new URL("../../../assets/image/", import.meta.url);
 
         var services = [
@@ -114,7 +225,7 @@ export default {
                 button: "Check request",
             },
         ];
-        return { services, imageUrl };
+        return { services, imageUrl, islogin, user };
     },
 };
 </script>
@@ -124,7 +235,20 @@ export default {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    background-attachment: fixed;
+}
+.cov h1,
+p {
+    color: white !important;
+}
+.res {
+    border-radius: 25px;
+    font-size: 16px !important;
+    border: 1px solid #ffffff !important;
+    color: #ffffff !important;
+}
+.res:hover {
+    background-color: #1d617a !important;
+    border: 1px solid #1d617a !important;
 }
 .wi {
     width: 80%;
@@ -149,6 +273,9 @@ export default {
     .card-body {
         margin-left: 0px !important;
         text-align: center;
+    }
+    p {
+        color: white !important;
     }
 }
 </style>

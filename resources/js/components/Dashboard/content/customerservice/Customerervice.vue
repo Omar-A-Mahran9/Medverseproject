@@ -4,8 +4,8 @@
             <div class="row mb-2">
                 <div class="col-sm-6">
                     <h3 class="text-bold">
-                        We Aim for the best, Providing the Highest Quality
-                        Products
+                        We aim for the best, providing the highest quality
+                        products
                     </h3>
                     <p>
                         *All fields are mandatory,except mentioned as (optional)
@@ -28,7 +28,7 @@
                     <!-- /.row -->
                     <form @submit.prevent="customerservice" class="pb-5">
                         <div class="form-group">
-                            <label for="exampleInputtitle">title</label>
+                            <label for="exampleInputtitle">Title</label>
                             <input
                                 style="background-color: #f2f2f2"
                                 type="text"

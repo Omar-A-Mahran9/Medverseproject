@@ -5,7 +5,7 @@
                 ><img src="@/assets/image/Logo.svg" class="log"
             /></a>
 
-            <form
+            <!-- <form
                 class="searc d-flex align-items-center"
                 style="
                     background-color: #f3f3f3;
@@ -27,16 +27,53 @@
                         width: 100%;
                     "
                 />
-            </form>
+            </form> -->
 
             <div class="d-flex gap-4 align-items-center">
+                <div>
+                    <a href="/" class="btn tex">Home</a>
+                </div>
+
+                <div>
+                    <div class="d-flex align-items-center">
+                        <div>
+                            <a
+                                v-if="islogin == true"
+                                href="admin"
+                                class="btn tex"
+                                >Dashboard</a
+                            >
+                        </div>
+                    </div>
+
+                    <div v-if="!islogin" class="d-flex">
+                        <li class="nav-item">
+                            <a href="login" class="nav-link me-4 ress">
+                                Login</a
+                            >
+                        </li>
+                        <li class="nav-item">
+                            <a href="register" class="nav-link me-4 ress"
+                                >Register</a
+                            >
+                        </li>
+                    </div>
+                </div>
                 <div v-if="user.user.type == 'DOCTOR'">
                     Welcome <strong>DR.</strong>{{ user.user.name }} !
                 </div>
-                <div v-else>Welcome {{ user.user.name }} !</div>
+                <div v-else>Welcome {{ user.user.name }}</div>
 
-                <button @click="logout" class="btn btn-primary">Logout</button>
-
+                <img
+                    :src="user.user.profile"
+                    width="50"
+                    height="50"
+                    style="
+                        border-radius: 50%;
+                        object-fit: cover;
+                        object-position: center center;
+                    "
+                />
                 <button
                     class="navbar-toggler"
                     type="button"
@@ -48,10 +85,15 @@
                 >
                     <span class="navbar-toggler-icon"></span>
                 </button>
-
-                <a class="prof">
-                    <img src="@/assets/image/profileicon.svg" />
-                </a>
+                <div>
+                    <button
+                        v-if="islogin == true"
+                        @click="logout"
+                        class="btn btn-primary"
+                    >
+                        Logout
+                    </button>
+                </div>
             </div>
         </div>
     </nav>
@@ -105,6 +147,12 @@
     </div>
 </template>
 <style scoped>
+.tex {
+    color: #1d617a;
+}
+.tex:hover {
+    color: #003549;
+}
 .navbar-toggler {
     display: block !important;
     border: none !important;
@@ -148,6 +196,8 @@ span {
 </style>
 <script setup>
 const user = window.Laravel;
+const islogin = window.Laravel.isLoggedin;
+const userr = window.Laravel.user ?? null;
 const logout = () => {
     axios.post("/logout").then(() => {
         // Redirect the user to the login page

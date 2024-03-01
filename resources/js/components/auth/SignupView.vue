@@ -2,18 +2,24 @@
     <section class="container-fluid back" style="width;: 100%px">
         <div class="container-fluid contain">
             <div class="row align-items-center justify-content-center">
-                <div class="col-12 col-md-6 respo">
-                    <div>
+                <div class="col-12 col-md-12 pl-5 pr-5 form-container">
+                    <div class="d-flex flex-column align-items-center gap-4">
+                        <a class="navbar-brand" href="/">
+                            <img
+                                src="@/assets/image/Logo.svg"
+                                width="200"
+                                class="white-fill"
+                            />
+                        </a>
                         <h1 class="txt">Welcome To Med-Verse!</h1>
+                        <h3
+                            style="margin-bottom: 50px !important"
+                            class="text-center"
+                        >
+                            Create Account
+                        </h3>
                     </div>
-                </div>
-                <div class="col-12 col-md-6 pl-5 pr-5 form-container">
-                    <h3
-                        style="margin-bottom: 100px !important"
-                        class="mb-5 text-center"
-                    >
-                        Create Account
-                    </h3>
+
                     <form @submit.prevent="submitForm" class="row g-5">
                         <div class="col-md-6">
                             <input
@@ -216,7 +222,7 @@ input {
 }
 .txt {
     width: 100% !important;
-    padding-bottom: 50px !important;
+    padding-bottom: 5px !important;
     text-align: center;
 }
 .form {

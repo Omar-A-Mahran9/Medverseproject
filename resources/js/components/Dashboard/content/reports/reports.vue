@@ -62,7 +62,7 @@
                                             "
                                         >
                                             <option hidden value="">
-                                                Choose group
+                                                Choose Clinic
                                             </option>
                                             <option
                                                 v-for="group in allgroup"
@@ -313,7 +313,7 @@
                     <div v-if="reqerror" style="color: #dc3545">
                         {{ reqerror }}
                     </div>
-                    <div v-else >
+                    <div v-else>
                         <h2>Order History</h2>
                         <div
                             class="card-body bg-white mb-5"
