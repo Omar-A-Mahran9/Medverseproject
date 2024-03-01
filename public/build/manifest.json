@@ -1,6 +1,6 @@
 {
-  "_html2canvas-a8e32577.js": {
-    "file": "assets/html2canvas-a8e32577.js",
+  "_html2canvas-4b4bfc0f.js": {
+    "file": "assets/html2canvas-4b4bfc0f.js",
     "imports": [
       "resources/js/app.js"
     ],
@@ -67,7 +67,7 @@
     "src": "node_modules/admin-lte/plugins/fontawesome-free/webfonts/fa-solid-900.woff2"
   },
   "node_modules/canvg/lib/index.es.js": {
-    "file": "assets/index.es-625062e8.js",
+    "file": "assets/index.es-4b258b84.js",
     "imports": [
       "resources/js/app.js"
     ],
@@ -80,7 +80,7 @@
     "src": "node_modules/dompurify/dist/purify.es.js"
   },
   "resources/css/app.css": {
-    "file": "assets/app-20eb4c01.css",
+    "file": "assets/app-c31067e2.css",
     "isEntry": true,
     "src": "resources/css/app.css"
   },
@@ -90,19 +90,16 @@
     "src": "resources/css/app.scss"
   },
   "resources/js/app.css": {
-    "file": "assets/app-ebf862f9.css",
+    "file": "assets/app-cbe6daef.css",
     "src": "resources/js/app.css"
   },
   "resources/js/app.js": {
     "assets": [
       "assets/Logo-cddaa53f.svg",
       "assets/Group7-38a24972.svg",
-      "assets/Ellipse-4ea73296.svg",
+      "assets/talal-bb95e147.jpg",
       "assets/call-f7553890.svg",
-      "assets/Ourstory-6aa4cfef.jpg",
-      "assets/Inventory-266345a3.jpeg",
-      "assets/consultant-7ed70f1c.jpeg",
-      "assets/Education-6110fc4e.jpeg",
+      "assets/yaseser-e7ebaa83.jpg",
       "assets/trueicon-581c3b1e.svg",
       "assets/falseicon-e2d53d89.svg",
       "assets/visa-e7510d3f.png",
@@ -114,10 +111,7 @@
       "assets/arrow-73d8cc3a.svg",
       "assets/phoneicon-d5e259e6.svg",
       "assets/Iconwind-89a66058.svg",
-      "assets/Iconpen-284e1823.svg",
       "assets/Iconsound-f7418ca9.svg",
-      "assets/search-c2c223e4.svg",
-      "assets/profileicon-8d8d1073.svg",
       "assets/messages-icon-2a83ad8a.svg",
       "assets/dashboard-47cc3cf4.svg",
       "assets/Vector-a639e2cc.svg",
@@ -126,17 +120,26 @@
       "assets/rightarrow-971f4af6.svg",
       "assets/Rectangle21-ceaaba6d.svg",
       "assets/login-786932a5.jpg",
-      "assets/menuicon-d23a35fc.svg"
+      "assets/Education-6110fc4e.jpeg",
+      "assets/Inventory-266345a3.jpeg",
+      "assets/menuicon-d23a35fc.svg",
+      "assets/consultant-7ed70f1c.jpeg"
     ],
     "css": [
-      "assets/app-ebf862f9.css"
+      "assets/app-cbe6daef.css"
     ],
     "dynamicImports": [
-      "_html2canvas-a8e32577.js",
+      "resources/js/assets/image/Inventory.jpeg",
+      "resources/js/assets/image/consultant.jpeg",
+      "resources/js/assets/image/Education.jpeg",
+      "resources/js/assets/image/Inventory.jpeg",
+      "resources/js/assets/image/consultant.jpeg",
+      "resources/js/assets/image/Education.jpeg",
+      "_html2canvas-4b4bfc0f.js",
       "node_modules/dompurify/dist/purify.es.js",
       "node_modules/canvg/lib/index.es.js"
     ],
-    "file": "assets/app-98116040.js",
+    "file": "assets/app-6073099a.js",
     "isEntry": true,
     "src": "resources/js/app.js"
   },
@@ -157,20 +160,16 @@
     "src": "resources/js/assets/image/Drawer/messages-icon.svg"
   },
   "resources/js/assets/image/Education.jpeg": {
-    "file": "assets/Education-6110fc4e.jpeg",
+    "assets": [
+      "assets/Education-6110fc4e.jpeg"
+    ],
+    "file": "assets/Education-6d9cd4f4.js",
+    "isDynamicEntry": true,
     "src": "resources/js/assets/image/Education.jpeg"
-  },
-  "resources/js/assets/image/Ellipse.svg": {
-    "file": "assets/Ellipse-4ea73296.svg",
-    "src": "resources/js/assets/image/Ellipse.svg"
   },
   "resources/js/assets/image/Group7.svg": {
     "file": "assets/Group7-38a24972.svg",
     "src": "resources/js/assets/image/Group7.svg"
-  },
-  "resources/js/assets/image/Iconpen.svg": {
-    "file": "assets/Iconpen-284e1823.svg",
-    "src": "resources/js/assets/image/Iconpen.svg"
   },
   "resources/js/assets/image/Iconsax/Linear/lock1.svg": {
     "file": "assets/lock1-2c824cd5.svg",
@@ -189,7 +188,11 @@
     "src": "resources/js/assets/image/Iconwind.svg"
   },
   "resources/js/assets/image/Inventory.jpeg": {
-    "file": "assets/Inventory-266345a3.jpeg",
+    "assets": [
+      "assets/Inventory-266345a3.jpeg"
+    ],
+    "file": "assets/Inventory-fa0757a2.js",
+    "isDynamicEntry": true,
     "src": "resources/js/assets/image/Inventory.jpeg"
   },
   "resources/js/assets/image/Logo.svg": {
@@ -199,10 +202,6 @@
   "resources/js/assets/image/Med-Verse.mp4": {
     "file": "assets/Med-Verse-bf0a61ca.mp4",
     "src": "resources/js/assets/image/Med-Verse.mp4"
-  },
-  "resources/js/assets/image/Ourstory.jpg": {
-    "file": "assets/Ourstory-6aa4cfef.jpg",
-    "src": "resources/js/assets/image/Ourstory.jpg"
   },
   "resources/js/assets/image/Rectangle21.svg": {
     "file": "assets/Rectangle21-ceaaba6d.svg",
@@ -217,7 +216,11 @@
     "src": "resources/js/assets/image/call.svg"
   },
   "resources/js/assets/image/consultant.jpeg": {
-    "file": "assets/consultant-7ed70f1c.jpeg",
+    "assets": [
+      "assets/consultant-7ed70f1c.jpeg"
+    ],
+    "file": "assets/consultant-ad12100a.js",
+    "isDynamicEntry": true,
     "src": "resources/js/assets/image/consultant.jpeg"
   },
   "resources/js/assets/image/falseicon.svg": {
@@ -248,17 +251,13 @@
     "file": "assets/phoneicon-d5e259e6.svg",
     "src": "resources/js/assets/image/phoneicon.svg"
   },
-  "resources/js/assets/image/profileicon.svg": {
-    "file": "assets/profileicon-8d8d1073.svg",
-    "src": "resources/js/assets/image/profileicon.svg"
-  },
   "resources/js/assets/image/rightarrow.svg": {
     "file": "assets/rightarrow-971f4af6.svg",
     "src": "resources/js/assets/image/rightarrow.svg"
   },
-  "resources/js/assets/image/search.svg": {
-    "file": "assets/search-c2c223e4.svg",
-    "src": "resources/js/assets/image/search.svg"
+  "resources/js/assets/image/talal.jpg": {
+    "file": "assets/talal-bb95e147.jpg",
+    "src": "resources/js/assets/image/talal.jpg"
   },
   "resources/js/assets/image/trueicon.svg": {
     "file": "assets/trueicon-581c3b1e.svg",
@@ -267,5 +266,9 @@
   "resources/js/assets/image/visa.png": {
     "file": "assets/visa-e7510d3f.png",
     "src": "resources/js/assets/image/visa.png"
+  },
+  "resources/js/assets/image/yaseser.jpg": {
+    "file": "assets/yaseser-e7ebaa83.jpg",
+    "src": "resources/js/assets/image/yaseser.jpg"
   }
 }
