@@ -523,7 +523,7 @@ import { onMounted, reactive, ref } from "vue";
 import { usetoaster } from "../../../toaster.js";
 import axios from "axios";
 import moment from "moment";
-const imageUrl = new URL("../../../../../storage/app", import.meta.url);
+const imageUrl = new URL("../../../../../storage", import.meta.url);
 const update = ref(false);
 const format = window.Laravel.format;
 const user = window.Laravel.user;

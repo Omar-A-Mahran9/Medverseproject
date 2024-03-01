@@ -28,6 +28,7 @@
                                 class="d-none"
                                 @change="handleimage"
                             />
+                            
                             <img
                                 @click="openfile"
                                 class="profile-user-img img-circle"
@@ -350,7 +351,7 @@
 import axios from "axios";
 import { onMounted, ref } from "vue";
 import { usetoaster } from "../../../../toaster.js";
-const imageUrl = new URL("../../../../../../storage/app", import.meta.url);
+const imageUrl = new URL("../../../../../../storage", import.meta.url);
 
 const toaster = usetoaster();
 const errorr = ref([]);

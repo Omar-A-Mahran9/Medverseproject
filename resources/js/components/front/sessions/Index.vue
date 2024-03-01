@@ -1283,7 +1283,7 @@ const session = ref({
     sessioncalender: null,
     sessiontimes: [],
 });
-const imageUrl = new URL("../../../../../storage/app", import.meta.url);
+const imageUrl = new URL("../../../../../storage", import.meta.url);
 
 const deletesession = (session) => {
     sessionidbeingDelete.value = session.id;
