@@ -116,7 +116,7 @@
                     <div class="col-12 col-lg-7 mb-5">
                         <div class="wi">
                             <h1>Welcome to Med-verse Academy</h1>
-                            <p style="text-align: justify; font-weight: 400;">
+                            <p style="text-align: justify; font-weight: 400">
                                 The Med-Verse Academy is our commitment to
                                 continuous learning and development in the
                                 healthcare sector. We offer a range of courses
@@ -230,6 +230,11 @@ export default {
 };
 </script>
 <style scoped>
+.navbar-toggler,
+.navbar-toggler-icon {
+    color: white !important;
+    background-color: white;
+}
 .coverr {
     background-image: url("@/assets/image/Education.jpeg");
     background-size: cover;
@@ -261,6 +266,15 @@ p {
     height: 471px;
 }
 @media screen and (max-width: 992px) {
+    .navbar-collapse {
+        background-color: #1d617a !important;
+        border-radius: 25px;
+        margin-top: 10px;
+    }
+    .nav-link {
+        color: white !important;
+        border: none !important;
+    }
     .wi {
         width: 100% !important;
     }

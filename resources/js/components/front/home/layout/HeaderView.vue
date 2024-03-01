@@ -34,9 +34,7 @@
             <a class="nav-link primarycolor me-4 res" href="#">Services</a>
           </li> -->
                     <li class="nav-item">
-                        <a
-                            class="nav-link seccolor me-4 res"
-                            href="#aboutus"
+                        <a class="nav-link seccolor me-4 res" href="#aboutus"
                             >About Us</a
                         >
                     </li>
@@ -118,6 +116,11 @@ let user = window.Laravel.user ?? null;
         background-color: #1d617a !important;
         border-radius: 25px;
         margin-top: 10px;
+    }
+    .navbar-toggler,
+    .navbar-toggler-icon {
+        color: white !important;
+        background-color: white;
     }
     .botto {
         width: 150px;

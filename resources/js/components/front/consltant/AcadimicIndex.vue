@@ -264,6 +264,20 @@ p {
     color: #ffffff !important;
 }
 @media screen and (max-width: 992px) {
+    .navbar-collapse {
+        background-color: #1d617a !important;
+        border-radius: 25px;
+        margin-top: 10px;
+    }
+    .nav-link {
+        color: white !important;
+        border: none !important;
+    }
+    .navbar-toggler,
+    .navbar-toggler-icon {
+        color: white !important;
+        background-color: white;
+    }
     .wi {
         width: 100% !important;
     }

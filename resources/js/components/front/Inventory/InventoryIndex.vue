@@ -115,7 +115,9 @@
                 >
                     <div class="col-12 col-lg-7 mb-5">
                         <div class="wi">
-                            <h1 class="mb-3">Welcome to Med-verse Cloud Inventory System</h1>
+                            <h1 class="mb-3">
+                                Welcome to Med-verse Cloud Inventory System
+                            </h1>
                             <p style="text-align: justify; font-weight: 400">
                                 Our Cloud Inventory System is the backbone of
                                 your healthcare organization, offering a
@@ -250,7 +252,13 @@ export default {
     },
 };
 </script>
+
 <style scoped>
+.navbar-toggler,
+.navbar-toggler-icon {
+    color: white !important;
+    background-color: white;
+}
 .coverr {
     background-image: url("@/assets/image/inventory.jpeg");
     background-size: cover;
@@ -283,6 +291,15 @@ export default {
     height: 471px;
 }
 @media screen and (max-width: 992px) {
+    .navbar-collapse {
+        background-color: #1d617a !important;
+        border-radius: 25px;
+        margin-top: 10px;
+    }
+    .nav-link {
+        color: white !important;
+        border: none !important;
+    }
     .wi {
         width: 100% !important;
     }

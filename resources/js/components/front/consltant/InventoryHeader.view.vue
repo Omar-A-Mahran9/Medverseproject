@@ -111,6 +111,16 @@ section {
 }
 
 @media only screen and (max-width: 991px) {
+    .navbar-collapse {
+        background-color: #1d617a !important;
+        border-radius: 25px;
+        margin-top: 10px;
+    }
+    .navbar-toggler,
+    .navbar-toggler-icon {
+        color: white !important;
+        background-color: white;
+    }
     .botto {
         width: 150px;
         margin: 10px;

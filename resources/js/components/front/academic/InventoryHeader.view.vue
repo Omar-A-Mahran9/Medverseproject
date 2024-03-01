@@ -80,6 +80,11 @@
     </section>
 </template>
 <style scoped>
+.navbar-toggler,
+.navbar-toggler-icon {
+    color: white !important;
+    background-color: white;
+}
 section {
     position: relative;
 }
@@ -111,6 +116,11 @@ section {
 }
 
 @media only screen and (max-width: 991px) {
+    .navbar-collapse {
+        background-color: #1d617a !important;
+        border-radius: 25px;
+        margin-top: 10px;
+    }
     .botto {
         width: 150px;
         margin: 10px;

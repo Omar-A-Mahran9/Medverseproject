@@ -88,10 +88,8 @@ export default {
         const imageUrl = new URL("../../../assets/image/", import.meta.url);
 
         var courses = ref([]);
-        console.log(courses.value);
-        axios.get("/api/apievents").then((response) => {
-            // console.log(response.data.data);
-
+         axios.get("/api/apievents").then((response) => {
+ 
             courses.value = response.data.data;
         });
         return { courses, imageUrl };
