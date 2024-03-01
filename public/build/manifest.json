@@ -80,7 +80,7 @@
     "src": "node_modules/dompurify/dist/purify.es.js"
   },
   "resources/css/app.css": {
-    "file": "assets/app-c31067e2.css",
+    "file": "assets/app-a6d52189.css",
     "isEntry": true,
     "src": "resources/css/app.css"
   },
@@ -88,6 +88,11 @@
     "file": "assets/app-39f28a98.css",
     "isEntry": true,
     "src": "resources/css/app.scss"
+  },
+  "resources/css/appfront.css": {
+    "file": "assets/appfront-876b7cd7.css",
+    "isEntry": true,
+    "src": "resources/css/appfront.css"
   },
   "resources/js/app.css": {
     "file": "assets/app-334bf179.css",
