@@ -111,7 +111,7 @@
                                     href="#!"
                                     class="text-secondary"
                                     style="text-decoration: none"
-                                    >info@hounter.com</a
+                                    >sa.medverse@gmail.com</a
                                 >
                             </li>
                         </ul>

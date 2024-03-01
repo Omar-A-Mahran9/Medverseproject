@@ -35,14 +35,16 @@
                             ><p style="color: white">+966 5053 58306</p></a
                         >
                         <div class="d-flex flex-column mt-5">
-                            <a href="www.mittarv.com" style="color: #1d617a"
-                                >www.mittarv.com</a
+                            <a
+                                href="http://medversesa.com/"
+                                style="color: #1d617a"
+                                >www.medversesa.com</a
                             >
                             <a
-                                href="mailto: vishal@mittarv.com"
+                                href="mailto: sa.medverse@gmail.com"
                                 style="color: #1d617a; text-decoration: none"
                             >
-                                vishal@mittarv.com</a
+                                sa.medverse@gmail.com</a
                             >
                         </div>
                     </div>
@@ -150,39 +152,39 @@
                         </h5>
 
                         <ul class="list-unstyled mb-0 d-flex flex-column gap-3">
-                            <li>
+                            <!-- <li>
                                 <a
                                     href="#!"
                                     class="text-secondary"
                                     style="text-decoration: none"
                                     >Facebook</a
                                 >
-                            </li>
-                            <li>
+                            </li> -->
+                            <!-- <li>
                                 <a
                                     href="#!"
                                     class="text-secondary"
                                     style="text-decoration: none"
                                     >Twitter</a
                                 >
-                            </li>
+                            </li> -->
                             <li>
                                 <a
-                                    href="#!"
+                                    href="https://www.instagram.com/medverse.sa?igsh=NzhrdzZkaDZ1eHdy"
                                     class="text-secondary"
                                     style="text-decoration: none"
                                 >
                                     Instagram
                                 </a>
                             </li>
-                            <li>
+                            <!-- <li>
                                 <a
                                     href="#!"
                                     class="text-secondary"
                                     style="text-decoration: none"
                                     >LinkedIn</a
                                 >
-                            </li>
+                            </li> -->
                         </ul>
                     </div>
                     <!--Grid column-->
