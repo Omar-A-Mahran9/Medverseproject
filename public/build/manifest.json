@@ -1,6 +1,6 @@
 {
-  "_html2canvas-871ee870.js": {
-    "file": "assets/html2canvas-871ee870.js",
+  "_html2canvas-190e1fcb.js": {
+    "file": "assets/html2canvas-190e1fcb.js",
     "imports": [
       "resources/js/app.js"
     ],
@@ -67,7 +67,7 @@
     "src": "node_modules/admin-lte/plugins/fontawesome-free/webfonts/fa-solid-900.woff2"
   },
   "node_modules/canvg/lib/index.es.js": {
-    "file": "assets/index.es-f494ee05.js",
+    "file": "assets/index.es-e709893d.js",
     "imports": [
       "resources/js/app.js"
     ],
@@ -140,11 +140,11 @@
       "resources/js/assets/image/Inventory.jpeg",
       "resources/js/assets/image/consultant.jpeg",
       "resources/js/assets/image/Education.jpeg",
-      "_html2canvas-871ee870.js",
+      "_html2canvas-190e1fcb.js",
       "node_modules/dompurify/dist/purify.es.js",
       "node_modules/canvg/lib/index.es.js"
     ],
-    "file": "assets/app-752434af.js",
+    "file": "assets/app-a1452e40.js",
     "isEntry": true,
     "src": "resources/js/app.js"
   },
