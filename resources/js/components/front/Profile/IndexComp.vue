@@ -103,7 +103,7 @@ export default {
                 {
                     description:
                         " Now With Med-Verce you can Mange your dental clinic & save more money in easiest way",
-                    image: "Consultant.jpeg",
+                    image: "consultant.jpeg",
                 },
             ],
         };

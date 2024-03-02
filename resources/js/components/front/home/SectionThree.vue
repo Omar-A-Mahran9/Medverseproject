@@ -65,14 +65,13 @@
                                 </p>
                             </div>
                         </div>
-                        <div>
+                        <div style="width: 45%">
                             <a
                                 class="btn btn-primary pt-2 d-flex justify-content-center"
                                 href="tel:+966 50 535 8306"
-                                style="width: 150px"
                             >
                                 <img src="@/assets/image/call.svg" />
-                                contact Now
+                                <span>contact Now</span>
                             </a>
                         </div>
                     </div>

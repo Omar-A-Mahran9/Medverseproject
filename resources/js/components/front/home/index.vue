@@ -1,7 +1,7 @@
 <template>
     <div class="back mb-5">
         <div class="video-background">
-            <video autoplay muted loop>
+            <video autoplay muted loop playsinline>
                 <source
                     src="../../../assets/image/Med-Verse.mp4"
                     type="video/mp4"

@@ -113,7 +113,7 @@
                     class="row align-items-center justify-content-center text-center text-md-start"
                     style="margin-bottom: 200px"
                 >
-                    <div class="col-12 col-lg-7 mb-5">
+                    <div class="col-12 col-lg-7 mb-5" style="z-index: 999">
                         <div class="wi">
                             <h1>Welcome to Med-verse Consultation Services</h1>
                             <p style="text-align: justify; font-weight: 400">
@@ -232,13 +232,44 @@ export default {
 </script>
 <style scoped>
 .coverr {
+    position: relative;
+}
+
+.coverr::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(
+        0,
+        0,
+        0,
+        0.3
+    ); /* Adjust the last value (0.5) for the overlay opacity */
+}
+
+.coverr::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     background-image: url("@/assets/image/consultant.jpeg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    z-index: -1; /* Ensure the background image is behind the overlay */
 }
+
 .wi {
     width: 80%;
+}
+.cov h1,
+p {
+    color: white !important;
 }
 .card {
     background-color: #d6efeb;
