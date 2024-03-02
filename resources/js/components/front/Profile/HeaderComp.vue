@@ -63,9 +63,9 @@
                     Welcome <strong>DR.</strong>{{ user.user.name }} !
                 </div>
                 <div v-else>Welcome {{ user.user.name }}</div>
-{{ user.user }}
+
                 <img
-                    :src="imageUrl + '/' + user.user.profile"
+                    :src="user.user.profile"
                     width="50"
                     height="50"
                     style="
