@@ -81,7 +81,10 @@ export default {
     },
 
     data() {
-        const imageUrl = new URL("../../../assets/image", import.meta.url);
+        const imageUrl = new URL(
+            "../../../build/assets/image",
+            import.meta.url
+        );
 
         return {
             imageUrl,
