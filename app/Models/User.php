@@ -48,7 +48,7 @@ class User extends Authenticatable
       
 
         // Concatenate the base URL and the image filename
-        return asset('Storage/'.$imageName);
+        return asset('storage/'.$imageName);
     }
     protected $attributes = [
         'role' => 'CLIENT', 

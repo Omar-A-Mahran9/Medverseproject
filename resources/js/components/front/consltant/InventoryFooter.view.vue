@@ -62,7 +62,7 @@
                         <ul class="list-unstyled mb-0 d-flex flex-column gap-3">
                             <li>
                                 <a
-                                    href="#!"
+                                    href="/"
                                     class="text-secondary"
                                     style="text-decoration: none"
                                     >Home</a

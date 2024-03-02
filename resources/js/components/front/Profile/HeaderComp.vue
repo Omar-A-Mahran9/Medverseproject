@@ -63,7 +63,6 @@
                     Welcome <strong>DR.</strong>{{ user.user.name }} !
                 </div>
                 <div v-else>Welcome {{ user.user.name }}</div>
-
                 <img
                     :src="user.user.profile"
                     width="50"
@@ -196,7 +195,6 @@ span {
 </style>
 <script setup>
 const imageUrl = new URL("../../../assets/image/", import.meta.url);
-
 const user = window.Laravel;
 const islogin = window.Laravel.isLoggedin;
 const userr = window.Laravel.user ?? null;

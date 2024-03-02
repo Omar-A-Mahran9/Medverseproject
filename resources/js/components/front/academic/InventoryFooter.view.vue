@@ -62,7 +62,7 @@
                         <ul class="list-unstyled mb-0 d-flex flex-column gap-3">
                             <li>
                                 <a
-                                    href="#!"
+                                    href="/"
                                     class="text-secondary"
                                     style="text-decoration: none"
                                     >Home</a
@@ -70,7 +70,7 @@
                             </li>
                             <li>
                                 <a
-                                    href="#!"
+                                    href="/#aboutus"
                                     class="text-secondary"
                                     style="text-decoration: none"
                                     >About us</a
@@ -78,7 +78,7 @@
                             </li>
                             <li>
                                 <a
-                                    href="#!"
+                                    href="/#ourservices"
                                     class="text-secondary"
                                     style="text-decoration: none"
                                     >Services</a
@@ -86,7 +86,7 @@
                             </li>
                             <li>
                                 <a
-                                    href="#!"
+                                    href="/#footer"
                                     class="text-secondary"
                                     style="text-decoration: none"
                                     >Contact Us</a
