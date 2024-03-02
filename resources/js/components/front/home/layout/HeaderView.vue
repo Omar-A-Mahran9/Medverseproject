@@ -112,6 +112,9 @@ let user = window.Laravel.user ?? null;
 }
 
 @media only screen and (max-width: 991px) {
+    .collapse .navbar-collapse {
+        z-index: 999999;
+    }
     .navbar-collapse {
         background-color: #1d617a !important;
         border-radius: 25px;
